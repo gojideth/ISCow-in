@@ -1,0 +1,8 @@
+name: PR Name Check
+
+on:
+  pull_request:
+
+jobs:
+  check:
+    uses: gojideth/pr-title-validation/.github/workflows/pull-request-title-validation.yml@main

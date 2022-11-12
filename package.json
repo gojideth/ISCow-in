@@ -1,0 +1,23 @@
+{
+  "name": "iscow-in",
+  "version": "1.0.0",
+  "description": "Cow data management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gojideth/ISCow-in.git"
+  },
+  "keywords": [
+    "COW",
+    "FARM"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gojideth/ISCow-in/issues"
+  },
+  "homepage": "https://github.com/gojideth/ISCow-in#readme"
+}

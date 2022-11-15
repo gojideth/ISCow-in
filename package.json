@@ -14,10 +14,13 @@
     "COW",
     "FARM"
   ],
-  "author": "",
+  "author": "Martin Chiquillo, Miguel Rubiano y Santiago Rivera",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gojideth/ISCow-in/issues"
   },
-  "homepage": "https://github.com/gojideth/ISCow-in#readme"
+  "homepage": "https://github.com/gojideth/ISCow-in#readme",
+  "dependencies": {
+    "sass": "^1.56.1"
+  }
 }

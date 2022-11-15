@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/gojideth/ISCow-in/issues"
   },
-  "homepage": "https://github.com/gojideth/ISCow-in#readme"
+  "homepage": "https://github.com/gojideth/ISCow-in#readme",
+  "devDependencies": {
+    "eslint": "^8.27.0"
+  }
 }

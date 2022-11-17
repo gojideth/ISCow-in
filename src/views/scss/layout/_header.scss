@@ -1,0 +1,33 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.header{    
+    
+    background-color: v.$beigeOscuro;
+    h1{
+        color: v.$negroHumo;
+        text-align: center;
+        margin: 0;
+        text-decoration: none;
+    }
+    .contenido-header{
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+        align-items: center;
+    }
+}
+
+.navegacion{
+    display: flex;
+    gap: 2rem;
+    a{
+        text-decoration: none;
+        text-align: center;
+        color: v.$negroHumo;
+        font-size: 1.6rem;
+        &:hover{
+            color:v.$amarillo;
+        }
+    }
+}

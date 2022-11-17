@@ -3,7 +3,7 @@
 
 
 body{
-    background-color: #080710;
+    background-color: v.$beigeClaro;
 }
 .background{
     width: 430px;
@@ -21,8 +21,8 @@ body{
 }
 .shape:first-child{
     background: linear-gradient(
-        #1845ad,
-        #23a2f6
+        v.$verdeClaro,
+        v.$verdeOscuro
     );
     left: -80px;
     top: -80px;
@@ -30,8 +30,8 @@ body{
 .shape:last-child{
     background: linear-gradient(
         to right,
-        #ff512f,
-        #f09819
+        v.$azulOscuro,
+        v.$azulClaro
     );
     right: -30px;
     bottom: -80px;
@@ -39,20 +39,20 @@ body{
 form{
     height: 520px;
     width: 400px;
-    background-color: rgba(255,255,255,0.13);
+    background-color: v.$beigeTransparente;
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    border: 2px solid v.$beigeTransparente;
+    box-shadow: 0 0 40px v.$negroHumo;
     padding: 50px 35px;
 }
 form *{
     font-family: 'Poppins',sans-serif;
-    color: #ffffff;
+    color: v.$negroHumo;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
@@ -74,7 +74,7 @@ input{
     display: block;
     height: 50px;
     width: 100%;
-    background-color: rgba(255,255,255,0.07);
+    background-color: v.$beige2;
     border-radius: 3px;
     padding: 0 10px;
     margin-top: 8px;
@@ -82,13 +82,13 @@ input{
     font-weight: 300;
 }
 ::placeholder{
-    color: #e5e5e5;
+    color: v.$gris;
 }
 button{
     margin-top: 50px;
     width: 100%;
-    background-color: #ffffff;
-    color: #080710;
+    background-color: v.$verdeBotones;
+    color: v.$negroHumo;
     padding: 15px 0;
     font-size: 18px;
     font-weight: 600;

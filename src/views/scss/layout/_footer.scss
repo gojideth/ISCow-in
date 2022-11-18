@@ -2,17 +2,15 @@
 @use 'bases/variables' as v;
 
 footer{
+    padding: 2rem;
     background-color: v.$negroHumo;
-}
 
-#footer h2{
-    font-size: 2.5rem;
-    font-weight: 600;
-    background-color: v.$negroHumo;
-    color: v.$beigeClaro;
-    text-align: center;
-    width: 100%;
-    padding: 10px 10px 0px 10px;
-    position: fixed;
-    bottom: 0;
+    .contenedor-footer{
+        padding-top: 2rem;
+    }
+
+    .copyright{
+        color: v.$beigeClaro;
+        text-align: center;
+    }
 }

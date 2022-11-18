@@ -1,8 +1,7 @@
-@use 'base/variables' as v;
-@use 'base/mixins' as m;
+@use 'bases/variables' as v;
+@use 'bases/mixins' as m;
 
-.header{    
-    
+.header{     
     background-color: v.$beigeOscuro;
     h1{
         color: v.$negroHumo;
@@ -27,7 +26,7 @@
         color: v.$negroHumo;
         font-size: 1.6rem;
         &:hover{
-            color:v.$amarillo;
+            color:v.$beigeOscuro;
         }
     }
 }

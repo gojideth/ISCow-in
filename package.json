@@ -4,7 +4,9 @@
   "description": "Cow data management",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch src/views/scss:src/views/css",
+    "dev": "gulp dev"
   },
   "repository": {
     "type": "git",
@@ -14,13 +16,21 @@
     "COW",
     "FARM"
   ],
-  "author": "",
+  "author": "Martin Chiquillo, Miguel Rubiano y Santiago Rivera",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gojideth/ISCow-in/issues"
   },
   "homepage": "https://github.com/gojideth/ISCow-in#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.2",
+    "bootstrap-icons": "^1.10.2",
+    "sass": "^1.56.1"
+  },
   "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^5.1.0",
     "eslint": "^8.27.0"
   }
 }

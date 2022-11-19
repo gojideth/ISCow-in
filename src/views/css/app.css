@@ -100,8 +100,25 @@ footer .contenedor-footer {
   padding-top: 2rem;
 }
 footer .copyright {
+  font-size: 2.2rem;
   color: #fdf5e6;
   text-align: center;
+}
+footer a {
+  color: #fdf5e6;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+footer a:hover {
+  color: #f5deb3;
+}
+footer .contenedor-contacto {
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 html {

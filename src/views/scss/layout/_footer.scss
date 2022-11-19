@@ -10,7 +10,26 @@ footer{
     }
 
     .copyright{
+        font-size: 2.2rem;
         color: v.$beigeClaro;
         text-align: center;
+    }
+
+    a{
+        color: v.$beigeClaro;
+        font-size: 2rem;
+        text-align: center;
+        margin-top: 2rem;
+        &:hover{
+            color:v.$beigeOscuro;
+        }
+    }
+    
+    .contenedor-contacto{
+        justify-content: space-between;
+        text-align: center;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 2rem;
     }
 }

@@ -11,6 +11,8 @@ const listUsers= async ()=>{
                         <td>${cow.email}</td>
                         <td>${cow.phone}</td>
                         <td>${cow.website}</td>
+                        <td></td>
+                        <td></td>
                 </tr>`
         });
         //document.getElementById('tableBody_Cows').innerHTML = tableBody;

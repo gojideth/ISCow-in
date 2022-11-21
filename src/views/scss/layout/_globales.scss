@@ -2,7 +2,6 @@
 
 html{
     font-size: 50.5%;
-    box-sizing: border-box;
 }
 
 *,
@@ -14,6 +13,8 @@ html{
 body{
     font-family: v.$font-family;
     background-color: v.$beigeClaro;
+    display: flex;
+    flex-direction: column;
 }
 
 p{

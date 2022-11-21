@@ -127,7 +127,6 @@ footer .contenedor-contacto {
 
 html {
   font-size: 50.5%;
-  box-sizing: border-box;
 }
 
 *,
@@ -139,6 +138,8 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   background-color: #fdf5e6;
+  display: flex;
+  flex-direction: column;
 }
 
 p {

@@ -1,6 +1,6 @@
-const{src,dest,watch} = require('gulp');
+import { src, dest, watch } from 'gulp';
 const sass= require('gulp-sass')(require('sass'));
-const plumber= require('gulp-plumber');
+import plumber from 'gulp-plumber';
 function css(done){
     src('src/views/scss/**/*.scss')//ubica
         .pipe(plumber())
@@ -14,5 +14,7 @@ function dev(done){
     done();
 }
 
-exports.css=css;
-exports.dev= dev;
+const _css = css;
+export { _css as css };
+const _dev = dev;
+export { _dev as dev };

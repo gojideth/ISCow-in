@@ -2,8 +2,12 @@
 @use 'bases/variables' as v;
 
 footer{
-    padding: 2rem;
+    padding: 2rem 0;
     background-color: v.$negroHumo;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 0;
 
     .contenedor-footer{
         padding-top: 2rem;

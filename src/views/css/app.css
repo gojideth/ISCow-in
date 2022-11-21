@@ -93,8 +93,12 @@ button {
 }
 
 footer {
-  padding: 2rem;
+  padding: 2rem 0;
   background-color: #1c0d02;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  margin-bottom: 0;
 }
 footer .contenedor-footer {
   padding-top: 2rem;
@@ -146,9 +150,10 @@ p {
   max-width: 150rem;
   margin: 0 auto;
 }
-.contenedor .imagen {
-  max-width: 120rem;
-  align-items: center;
+
+.seccion {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 a {
@@ -178,7 +183,6 @@ h3 {
 }
 
 .navegacion {
-  display: flex;
   gap: 2rem;
 }
 .navegacion a {

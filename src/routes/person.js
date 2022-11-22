@@ -5,9 +5,9 @@ const router = require('express').Router();
 //Keep them at the end of the route file for url parsing requests
 router
 	.get('/', controller.getAllPersons())
-	.get('/:id', controller.getOne)
+	.get('/:id', controller.getOne())
 	.post('/', controller.createOne())
-	.put('/:id', controller.updateOne)
-	.delete('/:id', controller.deleteOne);
+	.put('/:id', controller.updateOne())
+	.delete('/:id', controller.deleteOne());
 
 module.exports = router;

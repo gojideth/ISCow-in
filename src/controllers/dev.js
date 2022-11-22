@@ -3,7 +3,7 @@ const sequelize = require('../util/db');
 
 // [GET] ../dev/config
 exports.getConfig = (req,res)=>{
-	return res.status(200).json({packJson});
+	return res.status(200).json({'Ola': 'xD'});
 };
 
 //[GET] ../dev/version

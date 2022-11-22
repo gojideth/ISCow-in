@@ -2,7 +2,7 @@ version: '1.0'
 services:
   iscow_backend:
     container_name: iscow_backend
-    image: iscow/iscow_template:0.0.1
+    image: iscow/iscow_template:0.0.2
     build: 
       context: .
     ports:
@@ -20,8 +20,8 @@ services:
     image: "postgres:12"   
     environment:
       - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=iscowin
-      - POSTGRES_DB=iscowin_db
+      - POSTGRES_PASSWORD=xark123
+      - POSTGRES_DB=db_cows
     volumes:
       - iscowin_data:/var/lib/postgresql/data
     ports:

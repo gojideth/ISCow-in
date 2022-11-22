@@ -1,7 +1,8 @@
-import express from 'express';
+const express = require('express');
+
 const bodyParser = require('body-parser');
 
-const sequelize = require('./util/database');
+const sequelize = require('./util/db');
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 //Router (sample routes, while we export the routes from the controllers)
-app.use('/api', require('./routes/sample'));
+app.use('/api', require('./routes/dev'));
 app.use('/persons', require('./routes/person'));
 
 

@@ -1,10 +1,6 @@
 @use 'bases/mixins' as m;
 @use 'bases/variables' as v;
 
-
-body{
-    background-color: v.$beigeClaro;
-}
 .background{
     width: 430px;
     height: 520px;

@@ -14,8 +14,11 @@
     width: 200px;
     position: absolute;
     border-radius: 50%;
-    button{
-        margin-top: 50px;
+    
+}
+
+.boton-login{
+    margin-top: 50px;
         width: 100%;
         background-color: v.$verdeBotones;
         color: v.$negroHumo;
@@ -24,8 +27,8 @@
         font-weight: 600;
         border-radius: 5px;
         cursor: pointer;
-    }
 }
+
 .shape:first-child{
     background: linear-gradient(
         v.$verdeClaro,

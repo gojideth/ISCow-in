@@ -14,6 +14,17 @@
   position: absolute;
   border-radius: 50%;
 }
+.background .shape button {
+  margin-top: 50px;
+  width: 100%;
+  background-color: #25bd94;
+  color: #1c0d02;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .shape:first-child {
   background: linear-gradient(#74F3BB, #2D9C7F);
@@ -80,18 +91,6 @@ input {
   color: #2c241f;
 }
 
-button {
-  margin-top: 50px;
-  width: 100%;
-  background-color: #25bd94;
-  color: #1c0d02;
-  padding: 15px 0;
-  font-size: 18px;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 footer {
   padding: 2rem 0;
   background-color: #1c0d02;
@@ -125,7 +124,7 @@ footer .contenedor-contacto {
 }
 
 html {
-  font-size: 50.5%;
+  font-size: 70.5%;
 }
 
 *,

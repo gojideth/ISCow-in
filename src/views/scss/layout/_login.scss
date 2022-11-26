@@ -14,6 +14,17 @@
     width: 200px;
     position: absolute;
     border-radius: 50%;
+    button{
+        margin-top: 50px;
+        width: 100%;
+        background-color: v.$verdeBotones;
+        color: v.$negroHumo;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 }
 .shape:first-child{
     background: linear-gradient(
@@ -80,14 +91,5 @@ input{
 ::placeholder{
     color: v.$gris;
 }
-button{
-    margin-top: 50px;
-    width: 100%;
-    background-color: v.$verdeBotones;
-    color: v.$negroHumo;
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
+

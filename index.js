@@ -1,3 +1,14 @@
+let dataTable;
+let dataTableIsInitialized = false;
+
+const initDataTable=async()=>{
+        if(dataTableIsInitialized){
+                dataTable.destroy();
+        }
+        await listUsers();
+        dataTable= $('#table_Cows').DataTable({});
+        dataTableIsInitialized = true;
+}
 const listUsers= async ()=>{
         const response= await fetch('https://jsonplaceholder.typicode.com/users');
         const cows = await response.json();
@@ -21,4 +32,5 @@ const listUsers= async ()=>{
 
 window.addEventListener('load', function() {
         listUsers();
+        initDataTable();
 });

@@ -12,10 +12,14 @@ const listUsers= async ()=>{
                         <td>${cow.phone}</td>
                         <td>${cow.website}</td>
                         <td></td>
-                        <td></td>
+                        <td>
+                                <button class="btn btn-m btn-primary"><i class="fa-regular fa-pen-to-square"></i></button>
+                                <button class="btn btn-m btn-danger"><i class="fa-solid fa-trash-can"></i></i></button>
+                        </td>
                 </tr>`
         });
         //document.getElementById('tableBody_Cows').innerHTML = tableBody;
+        // eslint-disable-next-line no-undef
         tableBody_Cows.innerHTML = tableBody;
 }
 

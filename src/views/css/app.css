@@ -39,7 +39,7 @@
   bottom: -80px;
 }
 
-form {
+.login form {
   height: 520px;
   width: 400px;
   background-color: rgba(245, 222, 179, 0.3490196078);
@@ -53,30 +53,26 @@ form {
   box-shadow: 0 0 40px #1c0d02;
   padding: 50px 35px;
 }
-
-form * {
+.login form * {
   font-family: "Poppins", sans-serif;
   color: #1c0d02;
   letter-spacing: 0.5px;
   outline: none;
   border: none;
 }
-
-form h3 {
+.login form h3 {
   font-size: 32px;
   font-weight: 500;
   line-height: 42px;
   text-align: center;
 }
-
-label {
+.login label {
   display: block;
   margin-top: 30px;
   font-size: 16px;
   font-weight: 500;
 }
-
-input {
+.login input {
   display: block;
   height: 50px;
   width: 100%;
@@ -87,8 +83,7 @@ input {
   font-size: 14px;
   font-weight: 300;
 }
-
-::placeholder {
+.login ::placeholder {
   color: #2c241f;
 }
 
@@ -224,4 +219,103 @@ h3 {
 }
 .navegacion a:hover {
   color: #8a6642;
+}
+
+@media (min-width: 1025px) {
+  .h-custom {
+    height: 100vh !important;
+  }
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+
+.card-registration .select-arrow {
+  top: 13px;
+}
+
+.bg-indigo {
+  background-color: #8a6642;
+}
+
+@media (min-width: 992px) {
+  .card-registration-2 .bg-indigo {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+}
+@media (max-width: 991px) {
+  .card-registration-2 .bg-indigo {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+}
+.p-5 .form-outline {
+  position: relative;
+  margin-bottom: 1.25em;
+}
+.p-5 label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  cursor: text;
+}
+.p-5 .form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-bottom: 3px solid #dfcba6;
+}
+
+.personal-form input {
+  border: 0;
+  border-bottom: 3px solid #8a6642;
+  outline: none;
+}
+.personal-form input label {
+  font-size: 1em;
+  width: 100%;
+  height: 55px;
+}
+.personal-form input:focus + label {
+  font-size: 0.75em;
+  top: -10px;
+  pointer-events: none;
+}
+.personal-form h3 {
+  color: #8a6642;
+}
+
+.finca-form input {
+  border: 0;
+  border-bottom: 3px solid #fdf5e6;
+  background-color: #8a6642;
+  outline: none;
+}
+.finca-form input label {
+  font-size: 1em;
+  width: 100%;
+  height: 55px;
+}
+.finca-form input:focus + label {
+  font-size: 0.75em;
+  top: -10px;
+  pointer-events: none;
+}
+.finca-form h3 {
+  color: #fdf5e6;
+}
+.finca-form .form-control:focus {
+  background-color: #8a6642;
+}
+.finca-form button {
+  background-color: #fdf5e6;
+  color: #8a6642;
+}
+.finca-form button:hover {
+  background-color: #f5deb3;
 }

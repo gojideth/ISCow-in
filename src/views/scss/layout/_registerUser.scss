@@ -1,0 +1,108 @@
+@use 'bases/mixins' as m;
+@use 'bases/variables' as v;
+
+@media (min-width: 1025px) {
+    .h-custom {
+    height: 100vh !important;
+    }
+    }
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    } 
+    .bg-indigo {
+    background-color: v.$beigePardo;
+    }
+    @media (min-width: 992px) {
+    .card-registration-2 .bg-indigo {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    }
+    }
+    @media (max-width: 991px) {
+    .card-registration-2 .bg-indigo {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    }
+}
+
+.p-5{
+    .form-outline{
+        position: relative;
+        margin-bottom: 1.25em;
+    }
+    label{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        cursor: text;
+    }
+    .form-control:focus{
+        outline: none !important;
+        box-shadow: none !important;
+        border-bottom: 3px solid v.$beige2;
+    }
+}
+
+.personal-form{
+    input{
+        border:0;
+        border-bottom: 3px solid v.$beigePardo;
+        outline: none;
+        label{
+            font-size: 1em;
+            width: 100%;
+            height: 55px;
+        }
+        &:focus + label{
+            font-size: .75em;
+            top: -10px;
+            pointer-events: none;
+        }
+    }
+    h3{
+        color: v.$beigePardo;
+    }
+
+}
+
+.finca-form{
+    input{
+        border:0;
+        border-bottom: 3px solid v.$beigeClaro;
+        background-color: v.$beigePardo;
+        outline: none;
+        label{
+            font-size: 1em;
+            width: 100%;
+            height: 55px;
+        }
+        &:focus + label{
+            font-size: .75em;
+            top: -10px;
+            pointer-events: none;
+        }
+    }
+    h3{
+        color: v.$beigeClaro;
+    }
+    .form-control:focus{
+        background-color: v.$beigePardo;
+    }
+    button{
+
+        background-color: v.$beigeClaro;
+        color: v.$beigePardo;
+        &:hover{
+            background-color: v.$beigeOscuro;
+        }
+    }
+}
+

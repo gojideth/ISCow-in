@@ -2,9 +2,7 @@
 @use 'bases/variables' as v;
 
 @media (min-width: 1025px) {
-    .h-custom {
-    height: 100vh !important;
-    }
+
     }
     .card-registration .select-input.form-control[readonly]:not([disabled]) {
     font-size: 1rem;
@@ -28,6 +26,12 @@
     .card-registration-2 .bg-indigo {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    }
+}
+
+.registro{
+    h1{
+        align-items: center;
     }
 }
 

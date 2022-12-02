@@ -2,13 +2,13 @@ const Sequelize = require('sequelize');
 const db = require('../util/db');
 
 const Person = db.define(
-	'cows',
+	'persons',
 	{
 		id:{
-			type: Sequelize.UUID,
-			autoIncrement: true,
+			type: Sequelize.DataTypes.UUID,
 			allowNull: false,
-			primaryKey: true
+			primaryKey: true,
+			default: Sequelize.fn('uuid_generate_v4')
 		},
 		name:{
 			type: Sequelize.STRING,

@@ -6,6 +6,8 @@ const sequelize = require('./util/db');
 
 const app = express();
 
+const process = require('process');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -18,8 +20,8 @@ app.use((req, res, next) => {
 });
 
 //Router (sample routes, while we export the routes from the controllers)
-app.use('/api', require('./routes/dev'));
-app.use('/persons', require('./routes/person'));
+app.use('/api', require('./routes/devRoutes'));
+app.use('/persons', require('./routes/personRoutes'));
 
 
 (async () => {

@@ -1,6 +1,6 @@
 {
     "env": {
-        "browser": true,
+        "node": true,
         "es2021": true,
         "commonjs": true
     },
@@ -8,8 +8,22 @@
     "overrides": [
     ],
     "parserOptions": {
+        "sourceType": "module",
         "ecmaVersion": "latest"
     },
     "rules": {
-    }
+        "indent": [
+            "error",
+            "tab"
+        ],        
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+				
+    }  
 }

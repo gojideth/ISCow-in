@@ -1,0 +1,33 @@
+version: '1.0'
+services:
+  iscow_backend:
+    container_name: iscow_backend
+    image: iscow/iscow_template:1
+    build: 
+      context: .
+    ports:
+    - "3001:3001"
+    environment:
+      - EXTERNAL_PORT=3001
+      - PGUSER=admin
+      - PGPASSWORD=xark123
+      - PGDATABASE=db_cows
+      - PGHOST=iscowin_db
+    depends_on:
+      - iscowin_db
+  iscowin_db:
+    container_name: iscowin_db
+    image: "postgres:12"  
+    ports:
+      - "5432:5432" 
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=xark123
+      - POSTGRES_DB=db_cows
+    volumes:
+      - iscowin_data:/var/lib/postgresql/data
+   
+volumes:
+  iscowin_data: {}
+
+  

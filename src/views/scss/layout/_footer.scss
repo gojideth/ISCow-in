@@ -1,0 +1,38 @@
+@use 'bases/mixins' as m;
+@use 'bases/variables' as v;
+
+footer{
+    padding: 2rem 0;
+    background-color: v.$negroHumo;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 0;
+
+    .contenedor-footer{
+        padding-top: 2rem;
+    }
+
+    .copyright{
+        font-size: 2.2rem;
+        color: v.$beigeClaro;
+        text-align: center;
+    }
+
+    a{
+        color: v.$beigeClaro;
+        font-size: 2rem;
+        text-align: center;
+        margin-top: 2rem;
+        &:hover{
+            color:v.$beigeOscuro;
+        }
+    }
+    
+    .contenedor-contacto{
+        justify-content: space-between;
+        text-align: center;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+}

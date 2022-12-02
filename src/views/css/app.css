@@ -1,7 +1,4 @@
-body {
-  background-color: #fdf5e6;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 .background {
   width: 430px;
   height: 520px;
@@ -18,6 +15,18 @@ body {
   border-radius: 50%;
 }
 
+.boton-login {
+  margin-top: 50px;
+  width: 100%;
+  background-color: #25bd94;
+  color: #1c0d02;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .shape:first-child {
   background: linear-gradient(#74F3BB, #2D9C7F);
   left: -80px;
@@ -30,7 +39,7 @@ body {
   bottom: -80px;
 }
 
-form {
+.login form {
   height: 520px;
   width: 400px;
   background-color: rgba(245, 222, 179, 0.3490196078);
@@ -44,30 +53,26 @@ form {
   box-shadow: 0 0 40px #1c0d02;
   padding: 50px 35px;
 }
-
-form * {
+.login form * {
   font-family: "Poppins", sans-serif;
   color: #1c0d02;
   letter-spacing: 0.5px;
   outline: none;
   border: none;
 }
-
-form h3 {
+.login form h3 {
   font-size: 32px;
   font-weight: 500;
   line-height: 42px;
   text-align: center;
 }
-
-label {
+.login label {
   display: block;
   margin-top: 30px;
   font-size: 16px;
   font-weight: 500;
 }
-
-input {
+.login input {
   display: block;
   height: 50px;
   width: 100%;
@@ -78,19 +83,243 @@ input {
   font-size: 14px;
   font-weight: 300;
 }
-
-::placeholder {
+.login ::placeholder {
   color: #2c241f;
 }
 
-button {
-  margin-top: 50px;
+footer {
+  padding: 2rem 0;
+  background-color: #1c0d02;
   width: 100%;
-  background-color: #25bd94;
+  bottom: 0;
+  margin-bottom: 0;
+}
+footer .contenedor-footer {
+  padding-top: 2rem;
+}
+footer .copyright {
+  font-size: 2.2rem;
+  color: #fdf5e6;
+  text-align: center;
+}
+footer a {
+  color: #fdf5e6;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+footer a:hover {
+  color: #f5deb3;
+}
+footer .contenedor-contacto {
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+html {
+  font-size: 70.5%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fdf5e6;
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  font-size: 2rem;
+}
+
+.contenedor {
+  width: 95%;
+  max-width: 150rem;
+  margin: 0 auto;
+}
+
+.seccion {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  margin: 0 0 5rem 0;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.6rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+.barra {
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.navegacion {
+  gap: 2rem;
+}
+.navegacion a {
   color: #1c0d02;
-  padding: 15px 0;
-  font-size: 18px;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.8rem;
+  display: block;
+  text-align: center;
+}
+.navegacion a:hover {
+  color: #23a2f6;
+}
+
+.header {
+  background-color: #f5deb3;
+}
+.header h1 {
+  color: #1c0d02;
+  text-align: center;
+  margin: 0;
+  text-decoration: none;
+}
+.header .contenido-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  align-items: center;
+}
+
+.navegacion {
+  display: flex;
+  gap: 2rem;
+}
+.navegacion a {
+  text-decoration: none;
+  text-align: center;
+  color: #1c0d02;
+  font-size: 1.6rem;
+}
+.navegacion a:hover {
+  color: #8a6642;
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+
+.card-registration .select-arrow {
+  top: 13px;
+}
+
+.bg-indigo {
+  background-color: #8a6642;
+}
+
+@media (min-width: 992px) {
+  .card-registration-2 .bg-indigo {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+}
+@media (max-width: 991px) {
+  .card-registration-2 .bg-indigo {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+}
+.registro h1 {
+  align-items: center;
+}
+
+.p-5 .form-outline {
+  position: relative;
+  margin-bottom: 1.25em;
+}
+.p-5 label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  cursor: text;
+}
+.p-5 .form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-bottom: 3px solid #dfcba6;
+}
+
+.personal-form input {
+  border: 0;
+  border-bottom: 3px solid #8a6642;
+  outline: none;
+}
+.personal-form input label {
+  font-size: 1em;
+  width: 100%;
+  height: 55px;
+}
+.personal-form input:focus + label {
+  font-size: 0.75em;
+  top: -10px;
+  pointer-events: none;
+}
+.personal-form h3 {
+  color: #8a6642;
+}
+
+.finca-form input {
+  border: 0;
+  border-bottom: 3px solid #fdf5e6;
+  background-color: #8a6642;
+  outline: none;
+}
+.finca-form input label {
+  font-size: 1em;
+  width: 100%;
+  height: 55px;
+}
+.finca-form input:focus + label {
+  font-size: 0.75em;
+  top: -10px;
+  pointer-events: none;
+}
+.finca-form h3 {
+  color: #fdf5e6;
+}
+.finca-form .form-control:focus {
+  background-color: #8a6642;
+}
+.finca-form button {
+  width: 96%;
+  background-color: #fdf5e6;
+  color: #8a6642;
+}
+.finca-form button:hover {
+  background-color: #f5deb3;
+}
+
+#hidePadres {
+  display: none;
 }

@@ -26,3 +26,16 @@ const listUsers= async ()=>{
 window.addEventListener('load', function() {
         listUsers();
 });
+
+const hidePadres = document.getElementById('hidePadres');
+
+function handleRadioClickCow() {
+        if(document.getElementById('radioNatural').checked){
+                hidePadres.style.display = 'block';
+        }else{
+                hidePadres.style.display = 'none';
+        }
+}
+
+const radioButtonsCow = document.querySelectorAll('input[name="radioorigen"]');
+radioButtonsCow.forEach(radio => radio.addEventListener('click', handleRadioClickCow));

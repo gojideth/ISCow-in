@@ -2,7 +2,7 @@ const devService = require('../services/devService');
 const sequelize = require('../config/sequelize');
 // [GET] ../dev/config
 const getConfig = (req,res)=>{
-	const config = devService.getConfig();
+	const config = devService.getPackageJson();
 	res.send({ status: 'OK', data: config });
 
 };

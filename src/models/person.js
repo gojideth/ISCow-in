@@ -5,10 +5,9 @@ const Person = db.define(
 	'persons',
 	{
 		id:{
-			type: Sequelize.DataTypes.UUID,
-			allowNull: false,
-			primaryKey: true,
-			default: Sequelize.fn('uuid_generate_v4')
+			type: Sequelize.UUID,
+			defaultValue: Sequelize.UUIDV4,
+			primaryKey: true
 		},
 		name:{
 			type: Sequelize.STRING,

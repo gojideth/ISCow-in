@@ -1,5 +1,5 @@
 const listUsers= async ()=>{
-	const response= await fetch('https://jsonplaceholder.typicode.com/users');
+	const response= await fetch('');
 	const cows = await response.json();
 
 	let tableBody = '';

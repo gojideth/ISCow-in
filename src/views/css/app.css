@@ -148,7 +148,7 @@ p {
 
 .seccion {
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 a {
@@ -156,7 +156,7 @@ a {
 }
 
 h1, h2, h3 {
-  margin: 0 0 5rem 0;
+  margin: 0 0 1rem 0;
 }
 
 h1 {
@@ -185,10 +185,13 @@ h3 {
   text-decoration: none;
   font-size: 1.8rem;
   display: block;
-  text-align: center;
 }
 .navegacion a:hover {
-  color: #23a2f6;
+  color: #8a6642;
+}
+
+.dropdown-item {
+  padding: 0.2rem 0.2rem 0.2rem 0;
 }
 
 .header {
@@ -205,20 +208,6 @@ h3 {
   justify-content: space-between;
   padding: 2rem;
   align-items: center;
-}
-
-.navegacion {
-  display: flex;
-  gap: 2rem;
-}
-.navegacion a {
-  text-decoration: none;
-  text-align: center;
-  color: #1c0d02;
-  font-size: 1.6rem;
-}
-.navegacion a:hover {
-  color: #8a6642;
 }
 
 .card-registration .select-input.form-control[readonly]:not([disabled]) {

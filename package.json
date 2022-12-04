@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/gojideth/ISCow-in#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.10.2",
     "express": "^4.18.2",

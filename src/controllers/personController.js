@@ -14,7 +14,7 @@ const createPerson = async(req, res)=>{
 		if(person.error){
 			return res.status(400).json({error: person.error});
 		}
-		return res.status(200).json({user: person});
+		return res.status(200).json({person: person});
 	} catch (error) {
 		return res.status(400).json({error: 'Bad Request'});
 	}

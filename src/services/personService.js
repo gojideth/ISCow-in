@@ -4,14 +4,14 @@ const Person = require('../models/person');
  * !CRUD Controllers
  */
 
-//*Create a single USER
-const createPerson = async(user)=>{
+//*Create a single PERSON
+const createPerson = async(person)=>{
 	console.log('createPerson: [POST] /persons/');
 	try {
 		const PERSON_MODEL = {
-			name: user.name,
-			email: user.email,
-			last_name: user.email
+			name: person.name,
+			email: person.email,
+			last_name: person.email
 		};
 		try {
 			const person = await Person.create(PERSON_MODEL);

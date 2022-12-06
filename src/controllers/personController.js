@@ -7,12 +7,11 @@ const personService = require('../services/personService');
 //!* POST[/persons/create] Create a single PERSON
 const createPerson = async(req, res)=>{
 	console.log('createPerson: [POST] /persons/create');
-	console.log('Xd test');
 	try {
 		const person = await personService.createPerson(req.body);
 		console.log('body: ', req.body);
 		if(person.error){
-			return res.status(400).json({error: person.error});
+			return res.status(400).json({error: person.error + 'Testeo xD '});
 		}
 		return res.status(200).json({person: person});
 	} catch (error) {

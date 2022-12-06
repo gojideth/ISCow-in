@@ -27,25 +27,13 @@ const Person = db.define(
 		},
 		is_admin:{
 			type: Sequelize.BOOLEAN,
-			allowNull: false
+			allowNull: true,
+			defaultValue: false
 		},
 		password:{
 			type: Sequelize.STRING,
-			allowNull: false
-		},
-		
-	},{
-		hooks:{
-			beforeCreate: async  (person) => {
-				const salt = await bcrypt.genSalt(10,'a');
-				person.password = bcrypt.hashSync(person.password, salt);
-			},
-			beforeUpdate: async (person) => {
-				const salt = await bcrypt.genSalt(10,'a');
-				person.password = bcrypt.hashSync(person.password, salt);
-			}
-		}
-	}
-);
+			allowNull: true
+		}		
+	});
 
 module.exports = Person;

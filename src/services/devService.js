@@ -5,6 +5,7 @@ const getPackageJson = () => {
 };
 
 const getVersion = () => {
+	console.log('getVersion: ', packageJSON.version);
 	return packageJSON.version;
 };
 

@@ -13,6 +13,8 @@ services:
       - PGPASSWORD=xark123
       - PGDATABASE=db_cows
       - PGHOST=iscowin_db
+    volumes:
+      - ./src:/optional/src
     depends_on:
       - iscowin_db
   iscowin_db:
@@ -25,8 +27,7 @@ services:
       - POSTGRES_PASSWORD=xark123
       - POSTGRES_DB=db_cows
     volumes:
-      - iscowin_data:/var/lib/postgresql/data
-   
+      - iscowin_data:/var/lib/postgresql/data   
 volumes:
   iscowin_data: {}
 

@@ -8,9 +8,18 @@ const app = express();
 
 const process = require('process');
 
+const cors = require('cors');
+
+const morgan = require('morgan');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(morgan('tiny'));
+app.use(cors(
+	{
+		origin : 'http://127.0.0.1:3001',
+	}
+));
 //Set headers to allow cross origin resource sharing
 app.use((req, res, next) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
@@ -27,8 +36,9 @@ app.use('/persons', require('./routes/personRoutes'));
 (async () => {
 	try {
 		await sequelize.sync(
-			{ force: false} //Reset db every time
+			{ force: true} //Reset db every time
 		);
+		console.log('Listening on PORT: ' + process.env.EXTERNAL_PORT);
 		app.listen(process.env.EXTERNAL_PORT); //DEF in docker.compose.yml
 	} catch (error) {
 		console.log(error);

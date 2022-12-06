@@ -7,11 +7,12 @@ const Person = require('../models/person');
 //*Create a single PERSON
 const createPerson = async(person)=>{
 	console.log('createPerson: [POST] /persons/');
+	console.log('person : ', person);
 	try {
 		const PERSON_MODEL = {
 			name: person.name,
 			email: person.email,
-			last_name: person.email
+			last_name: person.last_name
 		};
 		try {
 			const person = await Person.create(PERSON_MODEL);
@@ -19,7 +20,7 @@ const createPerson = async(person)=>{
 			return {person};
 		} catch (error) {
 			console.log('Error in createPerson: ' + 'Person: ', error);
-			return {error};
+			return {error: error};
 		}
 	} catch (error) {
 		return {error: 'Bad Request'};

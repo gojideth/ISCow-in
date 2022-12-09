@@ -172,7 +172,6 @@ h3 {
 }
 
 .barra {
-  padding-top: 3rem;
   display: flex;
   flex-direction: column;
 }
@@ -196,6 +195,11 @@ h3 {
 
 .header {
   background-color: #f5deb3;
+}
+.header img {
+  width: 70px;
+  height: 70px;
+  padding-right: 10px;
 }
 .header h1 {
   color: #1c0d02;

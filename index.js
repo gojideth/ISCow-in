@@ -1,26 +1,38 @@
 const listCows= async ()=>{
-	const response= await fetch('https://jsonplaceholder.typicode.com/users');
+	const response= await fetch('http://127.0.0.1:3001/persons');
 	const cows = await response.json();
 
-	let tableBody = '';
-        
-	cows.forEach((cow, index)=>{
-		tableBody += `<tr>
-                        <td>${index+1}</td>
-                        <td>${cow.id}</td>
-                        <td>${cow.name}</td>
-                        <td>${cow.email}</td>
-                        <td>${cow.phone}</td>
-                        <td>${cow.website}</td>
-                        <td></td>
-                        <td>
-                                <button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button>
-                                <button class="btn btn-m btn-danger" title="Eliminar"><i class="fa-solid fa-trash-can"></i></i></button>
-                        </td>
-                </tr>`;
+	const finalCows = cows.cows;
+	finalCows.forEach((cow, index)=>{
+		var tdRace= document.createElement('td');
+		var tdIndex= document.createElement('td');
+		var tdGender= document.createElement('td');
+		var tdAge= document.createElement('td');
+		var tdDate= document.createElement('td');
+		var tdActions= document.createElement('td');
+		var tdOrigin= document.createElement('td');
+		if(cow.origin ==='natural'){
+			tdOrigin.innerHTML = '<i class="fa-solid fa-leaf"></i>';
+		}else{
+			tdOrigin.innerHTML = '<i class="fa-solid fa-leaf"></i>';
+		}
+		var tr = document.createElement('tr');
+		tdIndex.innerHTML = index+1;
+		tdRace.innerHTML = cow.race;
+		tdGender.innerHTML = cow.gender;
+		tdAge.innerHTML = cow.age;//TODO: Consulta para obtener la edad de la vaca
+		tdDate.innerHTML = cow.date;
+		tdActions.innerHTML = '<button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button><button class="btn btn-m btn-danger" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
+		tr.appendChild(tdIndex);
+		tr.appendChild(tdRace);
+		tr.appendChild(tdGender);
+		tr.appendChild(tdDate);
+		tr.appendChild(tdAge);
+		tr.appendChild(tdOrigin);
+		tr.appendChild(tdActions);
+		document.getElementById('tableBody_Vacas').appendChild(tr);
+
 	});
-	// eslint-disable-next-line no-undef
-	tableBody_Cows.innerHTML = tableBody;
 };
 
 const listFincas= async ()=>{
@@ -47,7 +59,6 @@ const listFincas= async ()=>{
 		tr.appendChild(tdActions);
 		document.getElementById('tableBody_Fincas').appendChild(tr);
 	});
-	// eslint-disable-next-line no-undef
 };
 
 const listUsers= async ()=>{

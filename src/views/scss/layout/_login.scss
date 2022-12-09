@@ -29,6 +29,10 @@
         cursor: pointer;
 }
 
+button{
+    margin-left: 2px;
+}
+
 .shape:first-child{
     background: linear-gradient(
         v.$verdeClaro,

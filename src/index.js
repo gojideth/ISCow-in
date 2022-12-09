@@ -10,16 +10,15 @@ const process = require('process');
 
 const cors = require('cors');
 
-const morgan = require('morgan');
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(morgan('tiny'));
+
 app.use(cors(
 	{
-		origin : 'http://127.0.0.1:3001',
+		origin : 'http://127.0.0.1:5500',
 	}
 ));
+
 //Set headers to allow cross origin resource sharing
 app.use((req, res, next) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');

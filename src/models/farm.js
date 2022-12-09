@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../util/db');
-
+const Plot = require('./plot');
 const Farm = db.define(
 	'farms',
 	{
@@ -23,5 +23,7 @@ const Farm = db.define(
 		},
 	}
 );
+
+Farm.hasMany(Plot, {foreignKey: 'farm_id'});
 
 module.exports = Farm;

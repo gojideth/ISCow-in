@@ -34,6 +34,17 @@ const Person = db.define(
 			type: Sequelize.STRING,
 			allowNull: true
 		}		
-	});
+	},{		
+		freezeTableName: true,
+		hooks: {
+			beforeCreate: async (user) => {
+				if (user.password) {
+					const salt = await bcrypt.genSaltSync(10, 'a');
+					user.password = bcrypt.hashSync(user.password, salt);
+				}
+			}	
+		}
+	}
+);
 
 module.exports = Person;

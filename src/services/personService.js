@@ -12,12 +12,14 @@ const createPerson = async(person)=>{
 		const PERSON_MODEL = {
 			name: person.name,
 			email: person.email,
-			last_name: person.last_name
+			last_name: person.last_name,
+			is_admin: person.is_admin,
+			password: person.password
 		};
 		try {
 			const person = await Person.create(PERSON_MODEL);
 			console.log('Ok createPerson: ', {person});
-			return {person};
+			return (person);
 		} catch (error) {
 			console.log('Error in createPerson: ' + 'Person: ', error);
 			return {error: error};

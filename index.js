@@ -1,7 +1,7 @@
 const listUsers= async ()=>{
-	const response= await fetch('https://jsonplaceholder.typicode.com/users');
+	const response= await fetch('http://localhost:3001/persons/');
 	const cows = await response.json();
-
+	console.log(cows);
 	let tableBody = '';
         
 	cows.forEach((cow, index)=>{

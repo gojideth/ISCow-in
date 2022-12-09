@@ -11,9 +11,9 @@ const createPerson = async(req, res)=>{
 		const person = await personService.createPerson(req.body);
 		console.log('body: ', req.body);
 		if(person.error){
-			return res.status(400).json({error: person.error + 'Testeo xD '});
+			return res.status(400).json({' Bad Request': person.error});
 		}
-		return res.status(200).json({person: person});
+		return res.status(200).json({'Message': 'Person created', 'Person': person});
 	} catch (error) {
 		return res.status(400).json({error: 'Bad Request'});
 	}

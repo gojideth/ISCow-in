@@ -86,9 +86,13 @@ const listLotes= async ()=>{
                         <td>${user.name}</td>
                         <td>
                                 <button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button>
-                                <button class="btn btn-m btn-danger" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
+                                <button class="btn btn-m btn-danger" href="index.html" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
+                                <button type="button" class="btn btn-m btn-info" data-bs-toggle="modal" data-bs-target="#modalNewCow title="Añadir Vaca"><i class="fa-solid fa-cow" ></i></button>
                         </td>
-                </tr>`;
+						<script>
+							
+						</script>
+                </tr>`	;
 	});
 	// eslint-disable-next-line no-undef
 	tableBody_Lotes.innerHTML = tableBody;

@@ -95,29 +95,24 @@ const listUsers= async ()=>{
 };
 
 const listLotes= async ()=>{
-	const response= await fetch('https://jsonplaceholder.typicode.com/users');
+	const response= await fetch('http://127.0.0.1:3001/persons');
 	const lotes = await response.json();
 
 	let tableBody = '';
-        
-	lotes.forEach((user, index)=>{
-		tableBody += `<tr>
-						<td>${index+1}</td>
-                        <td>${user.id}</td>
-                        <td>${user.username}</td>
-                        <td>${user.name}</td>
-                        <td>
-                                <button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button>
-                                <button class="btn btn-m btn-danger" href="index.html" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
-                                <button type="button" class="btn btn-m btn-info" data-bs-toggle="modal" data-bs-target="#modalNewCow title="Añadir Vaca"><i class="fa-solid fa-cow" ></i></button>
-                        </td>
-						<script>
-							
-						</script>
-                </tr>`	;
+
+	const finalLotes = lotes.lotes;
+	finalLotes.forEach((user, index)=>{
+		var tdArea= document.createElement('td');
+		var tdIndex= document.createElement('td');
+		var tdVacas= document.createElement('td');//TODO: Consulta para obtener las vacas del lote
+		var tdActions= document.createElement('td');
+		var tr= document.createElement('tr');
+		tdIndex.innerHTML = index+1;
+		tdArea.innerHTML = lotes.plot_size;
+		tdVacas.innerHTML = lotes.cows;//TODO: Consulta para obtener las vacas del lote
+		tdActions.innerHTML = '<button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button><button class="btn btn-m btn-danger" href="index.html" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button><button type="button" class="btn btn-m btn-info" data-bs-toggle="modal" data-bs-target="#modalNewCow title="Añadir Vaca"><i class="fa-solid fa-cow" ></i></button>';
+		tr.appendChild(tdIndex);
 	});
-	// eslint-disable-next-line no-undef
-	tableBody_Lotes.innerHTML = tableBody;
 };
 
 window.addEventListener('load', function() {

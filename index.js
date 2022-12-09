@@ -72,37 +72,10 @@ const listUsers= async ()=>{
 	tableBody_Users.innerHTML = tableBody;
 };
 
-const listLotes= async ()=>{
-	const response= await fetch('https://jsonplaceholder.typicode.com/users');
-	const lotes = await response.json();
-
-	let tableBody = '';
-        
-	lotes.forEach((user, index)=>{
-		tableBody += `<tr>
-						<td>${index+1}</td>
-                        <td>${user.id}</td>
-                        <td>${user.username}</td>
-                        <td>${user.name}</td>
-                        <td>
-                                <button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button>
-                                <button class="btn btn-m btn-danger" href="index.html" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
-                                <button type="button" class="btn btn-m btn-info" data-bs-toggle="modal" data-bs-target="#modalNewCow title="Añadir Vaca"><i class="fa-solid fa-cow" ></i></button>
-                        </td>
-						<script>
-							
-						</script>
-                </tr>`	;
-	});
-	// eslint-disable-next-line no-undef
-	tableBody_Lotes.innerHTML = tableBody;
-};
-
 window.addEventListener('load', function() {
 	listCows();
 	listUsers();
 	listFincas();
-	listLotes();
 });
 
 const hidePadres = document.getElementById('hidePadres');

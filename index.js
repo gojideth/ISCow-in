@@ -3,7 +3,7 @@ const listCows= async ()=>{
 	const cows = await response.json();
 
 	let tableBody = '';
-        
+    
 	cows.forEach((cow, index)=>{
 		tableBody += `<tr>
                         <td>${index+1}</td>
@@ -48,19 +48,20 @@ const listFincas= async ()=>{
 };
 
 const listUsers= async ()=>{
-	const response= await fetch('https://jsonplaceholder.typicode.com/users');
+	const response = await fetch('http://127.0.0.1:3001/persons');
 	const users = await response.json();
-
 	let tableBody = '';
-        
-	users.forEach((user, index)=>{
+	const finalUsers = users.persons;
+	console.log(finalUsers)     ;
+	finalUsers.forEach((user, index)=>{
 		tableBody += `<tr>
 						<td>${index+1}</td>
-                        <td>${user.id}</td>
-                        <td>${user.username}</td>
+                        <td>${'Acá va el ID'}</td>
+                        <td>${user.name + user.last_name}</td>
                         <td>${user.name}</td>
-                        <td>${user.name}</td> <!-- lastname -->
+                        <td>${user.last_name}</td> <!-- lastname -->
                         <td>${user.email}</td>
+                        <td>${user.is_admin}</td>
                         <td></td> <!-- role -->
                         <td>
                                 <button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button>

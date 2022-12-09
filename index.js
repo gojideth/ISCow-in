@@ -98,8 +98,6 @@ const listLotes= async ()=>{
 	const response= await fetch('http://127.0.0.1:3001/persons');
 	const lotes = await response.json();
 
-	let tableBody = '';
-
 	const finalLotes = lotes.lotes;
 	finalLotes.forEach((user, index)=>{
 		var tdArea= document.createElement('td');

@@ -27,6 +27,10 @@
   cursor: pointer;
 }
 
+button {
+  margin-left: 2px;
+}
+
 .shape:first-child {
   background: linear-gradient(#74F3BB, #2D9C7F);
   left: -80px;

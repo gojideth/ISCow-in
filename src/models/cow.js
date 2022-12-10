@@ -19,7 +19,7 @@ const Cow = db.define(
 			allowNull: false
 		},
 		gender:{
-			type: sequelize.BOOLEAN,
+			type: sequelize.STRING,
 			allowNull: false
 		},
 		origin:{

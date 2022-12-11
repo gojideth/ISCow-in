@@ -112,7 +112,14 @@ const listUsers= async ()=>{
 		tdName.innerHTML = user.name;
 		tdLastName.innerHTML = user.last_name;
 		tdEmail.innerHTML = user.email;
-		tdActions.innerHTML = '<button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button><button class="btn btn-m btn-danger" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
+		var buttonEdit = document.createElement('button');
+		var buttonDelete = document.createElement('button');
+		buttonEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
+		buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+		buttonEdit.className = 'btn btn-m btn-primary';
+		buttonDelete.className = 'btn btn-m btn-danger';
+		tdActions.appendChild(buttonEdit);
+		tdActions.appendChild(buttonDelete);
 		tr.appendChild(tdIndex);
 		tr.appendChild(tdName);
 		tr.appendChild(tdLastName);

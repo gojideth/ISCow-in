@@ -44,13 +44,15 @@ const listFincas= async ()=>{
 		var tdName= document.createElement('td');
 		var tdIndex= document.createElement('td');
 		var tdAddress= document.createElement('td');
+		var tdSize= document.createElement('td');
 		var tdLotes = document.createElement('td');
 		var tdActions= document.createElement('td');
 		var tr = document.createElement('tr');
 		tdIndex.innerHTML = index+1;
-		tdName.innerHTML = finca.name;
-		tdAddress.innerHTML = finca.address;
-		tdLotes.innerHTML = finca.lotes; //TODO: Consulta para obtener los lotes de la finca
+		tdName.innerHTML = finca.farm_name;
+		tdAddress.innerHTML = finca.farm_location;
+		tdSize.innerHTML = finca.farm_size;
+		tdLotes.innerHTML = finca.farm; //TODO: Consulta para obtener los lotes de la finca
 		tdActions.innerHTML = '<button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button><button class="btn btn-m btn-danger" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button><button class="btn btn-m btn-info" title="Ver lotes"><i class="fa-regular fa-eye"></i></button>';
 		tr.appendChild(tdIndex);
 		tr.appendChild(tdName);

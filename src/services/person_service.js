@@ -72,7 +72,7 @@ const deletePerson = async (id)=>{
 	console.log('deletePerson: [DELETE] /persons/:id');
 	console.log('personId : ', id);
 	try {
-		const User = await Person.destroy({where: {id: id}});
+		const User = await Person.destroy({where: {id}});
 		console.log('Ok deletePerson: ', {User});
 		return (User);
 	} catch (error) {

@@ -50,7 +50,7 @@ const updatePerson = async(req, res)=>{
 const deletePerson = async(req, res)=>{
 	console.log('deletePerson: [DELETE] /persons/delete');
 	try {
-		const person = await personService.deletePerson(req.body);
+		const person = await personService.deletePerson(req.params.id);
 		console.log('body: ', req.body);
 		if(person.error){
 			return res.status(400).json({' Bad Request': person.error});

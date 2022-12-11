@@ -73,7 +73,7 @@ const deleteFarm = async (id)=>{
 	console.log('deleteFarm: [DELETE] /farms/');
 	try {
 		try {
-			const farm = await Farm.destroy({where: {id: id}});
+			const farm = await Farm.destroy({where:id});
 			console.log('Ok deleteFarm: ', {farm});
 			return (farm);
 		} catch (error) {

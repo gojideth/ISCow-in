@@ -51,7 +51,7 @@ const updatePlot = async(req, res)=>{
 const deletePlot = async(req, res)=>{
 	console.log('deletePlot: [DELETE] /plots/delete');
 	try {
-		const plot = await plotService.deletePlot(req.body);
+		const plot = await plotService.deletePlot(req.params.id);
 		console.log('body: ', req.body);
 		if(plot.error){
 			return res.status(400).json({' Bad Request': plot.error});

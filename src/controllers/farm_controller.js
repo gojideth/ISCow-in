@@ -48,12 +48,12 @@ const updateFarm = async(req, res)=>{
 };
 
 const deleteFarm = async(req, res)=>{
-	console.log('deleteFarm: [DELETE] /farms/delete');
+	console.log('deleteFarm: [DELETE] /farms/');
 	try {
-		const farm = await farmService.deleteFarm(req.body);
+		const farm = await farmService.deleteFarm(req.params.id);
 		console.log('body: ', req.body);
 		if(farm.error){
-			return res.status(400).json({' Bad Request': farm.error});
+			return res.status(400).json({'Bad Request': farm.error});
 		}
 		return res.status(200).json({'Message': 'Farm deleted', 'Farm': farm});
 	} catch (error) {

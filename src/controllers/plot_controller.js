@@ -76,11 +76,42 @@ const getPlot = async(req, res)=>{
 	}
 };
 
+//!* GET[/farm/plot/] Get all PLOTS from a farm
+const getNumberPlots = async(req, res)=>{
+	console.log('getFarmPlots: [GET] /farm/plot/');
+	try {
+		const plots = await plotService.getAllPlotsByFarmId(req.params.id);
+		if(plots.error){
+			return res.status(400).json({error: plots.error});
+		}
+		return res.status(200).json({plots});
+	} catch (error) {
+		return res.status(400).json({error: 'Bad Request'});
+	}
+};
+
+//!*GET[/plots/plot/:id] Get a single PLOT by plotId
+const getPlotByPlotId = async(req, res)=>{
+	console.log('getPlotByPlotId: [GET] /plots/plot/:id');
+	try {
+		const plot = await plotService.getPlotById(req.params.id);
+		if(plot.error){
+			return res.status(400).json({error: plot.error});
+		}
+		return res.status(200).json({plot});
+	} catch (error) {
+		return res.status(400).json({error: 'Bad Request'});
+	}
+};
+
+
 
 module.exports = {
 	createPlot,
 	getAllPlots,
 	updatePlot,
 	deletePlot,
-	getPlot
+	getPlot,
+	getNumberPlots,
+	getPlotByPlotId	
 };

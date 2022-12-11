@@ -91,7 +91,7 @@ const getFarm = async (id)=>{
 	console.log('getFarm: [GET] /farms/');
 	try {
 		try {
-			const farm = await Farm.findOne({where: {id: id}});
+			const farm = await Farm.findOne({where: {id}});
 			console.log('Ok getFarm: ', {farm});
 			return (farm);
 		} catch (error) {

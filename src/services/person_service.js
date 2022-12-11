@@ -81,11 +81,25 @@ const deletePerson = async (id)=>{
 	}
 };
 
+//*Get a single PERSON
+const getPerson = async (id)=>{
+	console.log('getPerson: [GET] /persons/:id');
+	console.log('personId : ', id);
+	try {
+		const person = await Person.findOne({where: {id}});
+		console.log('Ok getPerson: ', {person});
+		return (person);
+	} catch (error) {
+		console.log('Error in getPerson: ' + 'Person: ', error);
+		return {error: error};
+	}
+};
 
 
 module.exports = {
 	createPerson,
 	getAllPersons,
 	updatePerson,
-	deletePerson
+	deletePerson,
+	getPerson
 };

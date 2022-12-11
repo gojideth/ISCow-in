@@ -1,13 +1,12 @@
-const controller = require('../controllers/personController');
+const controller = require('../controllers/person_controller');
 const express = require('express');
 const router = express.Router();
 
 //CRUD Model-Agnostic. 
 //Keep them at the end of the route file for url parsing requests
 router.get('/', controller.getAllPersons);
-//router.get('/:id', controller.getOne());
 router.post('/create', controller.createPerson);
-//router.put('/:id', controller.updateOne());
-//router.delete('/:id', controller.deleteOne());
+router.put('/:id', controller.updatePerson);
+router.delete('/:id', controller.deletePerson);
 
 module.exports = router;

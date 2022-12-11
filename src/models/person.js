@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../util/db');
-
+const bcrypt = require('bcrypt');
+const Farm = require('./farm');
 const Person = db.define(
 	'persons',
 	{
@@ -16,13 +17,36 @@ const Person = db.define(
 		email:{
 			type: Sequelize.STRING,
 			unique: true,
-			allowNull: false
+			allowNull: false,
+			validate:{
+				isEmail: true
+			}
 		},
 		last_name:{
 			type: Sequelize.STRING,
 			allowNull: false
+		},
+		is_admin:{
+			type: Sequelize.BOOLEAN,
+			allowNull: true,
+			defaultValue: false
+		},
+		password:{
+			type: Sequelize.STRING,
+			allowNull: true
+		}		
+	},{		
+		freezeTableName: true,
+		hooks: {
+			beforeCreate: async (user) => {
+				if (user.password) {
+					const salt = await bcrypt.genSaltSync(10, 'a');
+					user.password = bcrypt.hashSync(user.password, salt);
+				}
+			}	
 		}
-		
-	});
-
+	}
+);
+Person.hasMany(Farm, { foreignKey: 'person_id' });
+Farm.belongsTo(Person, { foreignKey: 'person_id' });
 module.exports = Person;

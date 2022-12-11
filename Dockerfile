@@ -11,4 +11,4 @@ RUN npm install --no-optional && npm cache clean --force
 #Copy our source code.
 WORKDIR /optional
 COPY . .
-CMD [ "node","./src/index.js" ]
+CMD ["npm", "run", "start"]

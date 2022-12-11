@@ -1,5 +1,5 @@
 const listCows= async ()=>{
-	const response= await fetch('http://127.0.0.1:3001/persons');
+	const response= await fetch('http://127.0.0.1:3001/cows');
 	const cows = await response.json();
 
 	const finalCows = cows.cows;
@@ -36,7 +36,7 @@ const listCows= async ()=>{
 };
 
 const listFincas= async ()=>{
-	const response= await fetch('http://127.0.0.1:3001/persons');
+	const response= await fetch('http://127.0.0.1:3001/farms');
 	const fincas = await response.json();
 
 	const finalFincas = fincas.farms;
@@ -95,7 +95,7 @@ const listUsers= async ()=>{
 };
 
 const listLotes= async ()=>{
-	const response= await fetch('http://127.0.0.1:3001/persons');
+	const response= await fetch('http://127.0.0.1:3001/plots');
 	const lotes = await response.json();
 
 	const finalLotes = lotes.lotes;

@@ -13,7 +13,8 @@ const createCow = async (cow) => {
 			race : cow.race,
 			born_date : cow.born_date,
 			gender : cow.gender,
-			origin : cow.origin
+			origin : cow.origin,
+			plot_id : cow.plot_id
 		};
 		try {
 			const cow = await Cow.create(COW_MODEL);
@@ -50,7 +51,8 @@ const updateCow = async (cow, id) => {
 			race : cow.race,
 			born_date : cow.born_date,
 			gender : cow.gender,
-			origin : cow.origin
+			origin : cow.origin,
+			plot_id : cow.plot_id
 		};
 		try {
 			const cow = await Cow.update(COW_MODEL, {where: {id: id}});

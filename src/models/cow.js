@@ -17,7 +17,7 @@ const Cow = db.define(
 			allowNull: false			
 		},
 		born_date:{
-			type: sequelize.DATE,
+			type: sequelize.DATEONLY   ,
 			allowNull: false
 		},
 		gender:{

@@ -48,9 +48,10 @@ const updateFarm = async (farmData, id)=>{
 	console.log('farm : ', farmData);
 	try {
 		const FARM_MODEL = {
-			farm_name : farmData.farm_name,
-			farm_location : farmData.farm_location,
-			farm_size : farmData.farm_size
+			farm_name: farmData.farm_name,
+			farm_location: farmData.farm_location,
+			farm_size: farmData.farm_size,
+			person_id: farmData.person_id
 		};
 
 		try {

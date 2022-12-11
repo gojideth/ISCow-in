@@ -53,7 +53,15 @@ const listFincas= async ()=>{
 		tdAddress.innerHTML = finca.farm_location;
 		tdSize.innerHTML = finca.farm_size;
 		tdLotes.innerHTML = finca.farm; //TODO: Consulta para obtener los lotes de la finca
-		tdActions.innerHTML = '<button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button><button class="btn btn-m btn-danger" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button><button class="btn btn-m btn-info" title="Ver lotes"><i class="fa-regular fa-eye"></i></button>';
+		var buttonEdit = document.createElement('button');
+		var buttonDelete = document.createElement('button');
+		var buttonView = document.createElement('button');
+		buttonEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
+		buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+		buttonView.innerHTML = '<i class="fa-regular fa-eye"></i>';
+		tdActions.appendChild(buttonEdit);
+		tdActions.appendChild(buttonDelete);
+		tdActions.appendChild(buttonView);
 		tr.appendChild(tdIndex);
 		tr.appendChild(tdName);
 		tr.appendChild(tdAddress);

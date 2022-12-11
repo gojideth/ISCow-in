@@ -69,7 +69,7 @@ const listFincas= async ()=>{
 		});
 		buttonDelete.addEventListener('click', ()=>{
 			alert('Eliminar');
-			deleteFunction(finca.id);
+			deleteFunction(finca.id, 'farms');
 		});
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
@@ -152,9 +152,9 @@ function handleRadioClickCow() {
 	}
 }
 
-const deleteFunction = async (id) => {
+const deleteFunction = async (id, endpoint) => {
 	console.log(id);
-	await fetch(`http://${HOST}/cows/${id}`, {
+	await fetch(`http://${HOST}/${endpoint}/${id}`, {
 		method: 'DELETE',
 	}).then((response) => {
 		window.alert('Vaca eliminada'+response);

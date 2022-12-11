@@ -144,7 +144,14 @@ const listLotes= async ()=>{
 		tdIndex.innerHTML = index+1;
 		tdArea.innerHTML = lotes.plot_size;
 		tdVacas.innerHTML = lotes.cows;//TODO: Consulta para obtener las vacas del lote
-		tdActions.innerHTML = '<button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button><button class="btn btn-m btn-danger" href="index.html" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button><button type="button" class="btn btn-m btn-info" data-bs-toggle="modal" data-bs-target="#modalNewCow title="Añadir Vaca"><i class="fa-solid fa-cow" ></i></button>';
+		var buttonEdit = document.createElement('button');
+		var buttonDelete = document.createElement('button');
+		buttonEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
+		buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+		buttonEdit.className = 'btn btn-m btn-primary';
+		buttonDelete.className = 'btn btn-m btn-danger';
+		tdActions.appendChild(buttonEdit);
+		tdActions.appendChild(buttonDelete);
 		tr.appendChild(tdIndex);
 	});
 };

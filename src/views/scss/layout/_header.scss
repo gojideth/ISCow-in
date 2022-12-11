@@ -1,7 +1,12 @@
 @use 'bases/variables' as v;
 @use 'bases/mixins' as m;
 
-.header{     
+.header{   
+    img{
+        width: 70px;
+        height: 70px;
+        padding-right: 10px;
+    }
     background-color: v.$beigeOscuro;
     h1{
         color: v.$negroHumo;

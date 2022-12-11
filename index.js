@@ -2,7 +2,7 @@ const listCows= async ()=>{
 	const response= await fetch('http://127.0.0.1:3001/cows');
 	const cows = await response.json();
 
-	const finalCows = cows.cows;
+	const finalCows = cows.allCows;
 	finalCows.forEach((cow, index)=>{
 		var tdRace= document.createElement('td');
 		var tdIndex= document.createElement('td');
@@ -14,7 +14,7 @@ const listCows= async ()=>{
 		if(cow.origin ==='natural'){
 			tdOrigin.innerHTML = '<i class="fa-solid fa-leaf"></i>';
 		}else{
-			tdOrigin.innerHTML = '<i class="fa-solid fa-leaf"></i>';
+			tdOrigin.innerHTML = '<i class="fa-solid fa-money-bill"></i>';
 		}
 		var tr = document.createElement('tr');
 		tdIndex.innerHTML = index+1;
@@ -30,7 +30,7 @@ const listCows= async ()=>{
 		tr.appendChild(tdAge);
 		tr.appendChild(tdOrigin);
 		tr.appendChild(tdActions);
-		document.getElementById('tableBody_Vacas').appendChild(tr);
+		document.getElementById('tableBody_Cows').appendChild(tr);
 
 	});
 };
@@ -53,7 +53,15 @@ const listFincas= async ()=>{
 		tdAddress.innerHTML = finca.farm_location;
 		tdSize.innerHTML = finca.farm_size;
 		tdLotes.innerHTML = finca.farm; //TODO: Consulta para obtener los lotes de la finca
-		tdActions.innerHTML = '<button class="btn btn-m btn-primary" title="Editar"><i class="fa-regular fa-pen-to-square"></i></button><button class="btn btn-m btn-danger" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button><button class="btn btn-m btn-info" title="Ver lotes"><i class="fa-regular fa-eye"></i></button>';
+		var buttonEdit = document.createElement('button');
+		var buttonDelete = document.createElement('button');
+		var buttonView = document.createElement('button');
+		buttonEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
+		buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+		buttonView.innerHTML = '<i class="fa-regular fa-eye"></i>';
+		tdActions.appendChild(buttonEdit);
+		tdActions.appendChild(buttonDelete);
+		tdActions.appendChild(buttonView);
 		tr.appendChild(tdIndex);
 		tr.appendChild(tdName);
 		tr.appendChild(tdAddress);

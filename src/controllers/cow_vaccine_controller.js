@@ -28,7 +28,7 @@ const getAllCowVaccines = async (req, res) => {
 		if (allCowVaccines.error) {
 			return res.status(400).json({ ' Bad Request': allCowVaccines.error });
 		}
-		return res.status(200).json(allCowVaccines);
+		return res.status(200).json({allCowVaccines});
 	} catch (error) {
 		return res.status(400).json({ error: 'Bad Request' });
 	}

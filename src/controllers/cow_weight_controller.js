@@ -24,7 +24,7 @@ const getAllCowWeights = async (req, res) => {
 	try {
 		const allCow_weights = await cowWeightService.getAllCow_weights();
 		console.log('OK getAllCowWeights: ', allCow_weights.map(cow_weights => cow_weights.dataValues));
-		res.send(allCow_weights);
+		res.send({allCow_weights});
 	} catch (error) {
 		console.log('Error in getAllCowWeights ' + 'Cow_weights:', error);
 		res.status(500).send({error: error});

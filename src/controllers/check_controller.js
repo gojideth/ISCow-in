@@ -28,7 +28,7 @@ const getAllChecks = async(req, res)=>{
 		if(allChecks.error){
 			return res.status(400).json({' Bad Request': allChecks.error});
 		}
-		return res.status(200).json(allChecks);
+		return res.status(200).json({allChecks});
 	} catch (error) {
 		return res.status(400).json({error: 'Bad Request'});
 	}

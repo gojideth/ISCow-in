@@ -28,7 +28,7 @@ const getAllCows = async (req, res) => {
 		if (allCows.error) {
 			return res.status(400).json({ ' Bad Request': allCows.error });
 		}
-		return res.status(200).json(allCows);
+		return res.status(200).json({allCows});
 	} catch (error) {
 		return res.status(400).json({ error: 'Bad Request' });
 	}

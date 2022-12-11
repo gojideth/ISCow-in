@@ -1,4 +1,4 @@
-const devService = require('../services/devService');
+const devService = require('../services/dev_service');
 const sequelize = require('../config/sequelize');
 // [GET] ../dev/config
 const getConfig = (req,res)=>{

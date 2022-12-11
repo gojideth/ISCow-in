@@ -1,4 +1,4 @@
-const controller = require('../controllers/devController');
+const controller = require('../controllers/dev_controller');
 const express = require('express');
 const router = express.Router();
 const morgan = require('morgan');

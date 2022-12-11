@@ -1,4 +1,4 @@
-const personService = require('../services/personService');
+const personService = require('../services/person_service');
 
 /**
  * CRUD CONTROLLERS
@@ -33,10 +33,40 @@ const getAllPersons = async(req, res)=>{
 	}
 };
 
+const updatePerson = async(req, res)=>{
+	console.log('updatePerson: [PUT] /persons/update');
+	try {
+		const person = await personService.updatePerson(req.body, req.params.id);
+		console.log('body: ', req.body);
+		if(person.error){
+			return res.status(400).json({' Bad Request': person.error});
+		}
+		return res.status(200).json({'Message': 'Person updated', 'Person': person});
+	} catch (error) {
+		return res.status(400).json({error: 'Bad Request'});
+	}
+};
+
+const deletePerson = async(req, res)=>{
+	console.log('deletePerson: [DELETE] /persons/delete');
+	try {
+		const person = await personService.deletePerson(req.body);
+		console.log('body: ', req.body);
+		if(person.error){
+			return res.status(400).json({' Bad Request': person.error});
+		}
+		return res.status(200).json({'Message': 'Person deleted', 'Person': person});
+	} catch (error) {
+		return res.status(400).json({error: 'Bad Request'});
+	}
+};
+
 
 module.exports = {
 	createPerson,
-	getAllPersons
+	getAllPersons,
+	updatePerson,
+	deletePerson
 };
 
 //TODO Missing the getOnePerson, updatePerson and deletePerson

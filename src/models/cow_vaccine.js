@@ -1,8 +1,7 @@
 const sequelize = require('sequelize');
 const db = require('../util/db');
-const Checks = require('./check');
 
-const Cow_vaccine = db.define(
+const CowVaccine = db.define(
 	'cows_vaccine',
 	{
 		id:{
@@ -17,6 +16,5 @@ const Cow_vaccine = db.define(
 	}
 );
 
-Cow_vaccine.hasMany(Checks, {foreignKey: 'cow_vaccine_id'});
 
-module.exports = Cow_vaccine;
+module.exports = CowVaccine;

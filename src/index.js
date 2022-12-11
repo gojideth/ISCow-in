@@ -28,8 +28,9 @@ app.use((req, res, next) => {
 });
 
 //Router (sample routes, while we export the routes from the controllers)
-app.use('/api', require('./routes/devRoutes'));
-app.use('/persons', require('./routes/personRoutes'));
+app.use('/api', require('./routes/dev_routes'));
+app.use('/persons', require('./routes/person_routes'));
+app.use('/farms', require('./routes/farm_routes'));
 
 
 (async () => {

@@ -1,27 +1,22 @@
 const sequelize = require('sequelize');
 const db = require('../util/db');
-
-const Plot = db.define(
-	'plots',
+const Cow_weight = db.define(
+	'cows_weight',
 	{
 		id:{
 			type: sequelize.UUID,
 			defaultValue: sequelize.UUIDV4,
 			primaryKey: true
 		},
-		plot_number:{
-			type: sequelize.STRING,
+		weight_date:{
+			type: sequelize.DATE,
 			allowNull: false
 		},
-		plot_size:{
-			type: sequelize.STRING,
-			allowNull: false
-		},		
-		plot_status:{
-			type: sequelize.STRING,
+		weight:{
+			type: sequelize.FLOAT,
 			allowNull: false
 		}
 	}
 );
 
-module.exports = Plot;
+module.exports = Cow_weight;

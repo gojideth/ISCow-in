@@ -10,7 +10,9 @@ const createPlot = async(plot)=>{
 	console.log('plot : ', plot);
 	try {
 		const PLOT_MODEL = {
-			name: plot.name,
+			plot_number: plot.plot_number,
+			plot_size: plot.plot_size,
+			plot_status: plot.plot_status,
 			farm_id: plot.farm_id
 		};
 		try {
@@ -42,14 +44,15 @@ const getAllPlots = async ()=>{
 };
 
 //*Update a single PLOT
-const updatePlot = async (plotData, id)=>{
+const updatePlot = async (plot, id)=>{
 	console.log('updatePlot: [PUT] /plots/');
-	console.log('plot : ', plotData);
+	console.log('plot : ', plot);
 	try {
 		const PLOT_MODEL = {
-			plot_name : plotData.plot_name,
-			plot_location : plotData.plot_location,
-			plot_size : plotData.plot_size
+			plot_number: plot.plot_number,
+			plot_size: plot.plot_size,
+			plot_status: plot.plot_status,
+			farm_id: plot.farm_id
 		};
 
 		try {

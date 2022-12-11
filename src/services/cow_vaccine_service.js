@@ -11,6 +11,9 @@ const createCow_vaccine = async(cow_vaccine)=>{
 	try {
 		const COW_VACCINE_MODEL = {
 			vaccine_date : cow_vaccine.vaccine_date,
+			check_id : cow_vaccine.check_id,
+			vaccine_id : cow_vaccine.vaccine_id,
+			cow_id : cow_vaccine.cow_id,
 		};
 		try {
 			const cow_vaccine = await Cow_vaccine.create(COW_VACCINE_MODEL);
@@ -47,6 +50,9 @@ const updateCow_vaccine = async (cow_vaccineData, id)=>{
 	try {
 		const COW_VACCINE_MODEL = {
 			vaccine_date : cow_vaccineData.vaccine_date,
+			check_id : cow_vaccineData.check_id,
+			vaccine_id : cow_vaccineData.vaccine_id,
+			cow_id : cow_vaccineData.cow_id,
 		};
 		try {
 			const cow_vaccine = await Cow_vaccine.update(COW_VACCINE_MODEL, {where: {id: id}});

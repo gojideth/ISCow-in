@@ -50,6 +50,8 @@ const updateCow_weight = async (cow_weightData, id)=>{
 		const COW_WEIGHT_MODEL = {
 			weight : cow_weightData.weight,
 			weight_date : cow_weightData.weight_date,
+			cow_id : cow_weightData.cow_id
+
 		};
 		try {
 			const cow_weight = await Cow_weight.update(COW_WEIGHT_MODEL, {where: {id: id}});

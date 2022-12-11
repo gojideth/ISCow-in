@@ -18,7 +18,7 @@ const CowVaccine = db.define(
 	}
 );
 
-//CowVaccine.belongsTo(Check, {foreignKey: 'cow_vaccines_id'});
-CowVaccine.hasMany(Vaccine, {foreignKey: 'check_id'});
+CowVaccine.belongsTo(Check, {foreignKey: 'check_id'});
+CowVaccine.belongsTo(Vaccine, {foreignKey: 'vaccine_id'});
 
 module.exports = CowVaccine;

@@ -62,9 +62,25 @@ const deletePlot = async(req, res)=>{
 	}
 };
 
+//!* GET[/plots/:id] Get a single PLOT
+const getPlot = async(req, res)=>{
+	console.log('getPlot: [GET] /plots/:id');
+	try {
+		const plot = await plotService.getPlot(req.params.id);
+		if(plot.error){
+			return res.status(400).json({error: plot.error});
+		}
+		return res.status(200).json({plot});
+	} catch (error) {
+		return res.status(400).json({error: 'Bad Request'});
+	}
+};
+
+
 module.exports = {
 	createPlot,
 	getAllPlots,
 	updatePlot,
-	deletePlot
+	deletePlot,
+	getPlot
 };

@@ -1,6 +1,5 @@
 const sequelize = require('sequelize');
 const db = require('../util/db');
-const Cow = require('./cow');
 const Check = db.define(
 	'checks',
 	{
@@ -28,6 +27,5 @@ const Check = db.define(
 	}
 );
 
-Check.belongsTo(Cow, { foreignKey: 'cow_id' });
 
 module.exports = Check;

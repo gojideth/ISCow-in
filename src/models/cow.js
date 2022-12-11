@@ -1,5 +1,9 @@
 const sequelize = require('sequelize');
 const db = require('../util/db');
+const Plot = require('./plot');
+const Cow_weight = require('./cow_weight');
+const CowVaccine = require('./cow_vaccine');
+const Parentage = require('./parentage');
 const Cow = db.define(
 	'cows',
 	{
@@ -26,5 +30,15 @@ const Cow = db.define(
 		}
 	}
 );
+Plot.hasMany(Cow, {foreignKey: 'plot_id'});
+Cow.belongsTo(Plot, {foreignKey: 'plot_id'});
+
+Cow.hasMany(Cow_weight, {foreignKey: 'cow_id'});
+Cow_weight.belongsTo(Cow, {foreignKey: 'cow_id'});
+
+Cow.hasMany(CowVaccine, {foreignKey: 'cow_id'});
+
+Cow.hasMany(Parentage, {foreignKey: 'cow_id'});
+Parentage.belongsTo(Cow, {foreignKey: 'cow_id'});
 
 module.exports = Cow;

@@ -61,11 +61,26 @@ const deleteFarm = async(req, res)=>{
 	}
 };
 
+const getFarmById = async(req, res)=>{
+	console.log('getFarmById: [GET] /farms/:id');
+	try {
+		const farm = await farmService.getFarmById(req.params.id);
+		console.log('body: ', req.body);
+		if(farm.error){
+			return res.status(400).json({' Bad Request': farm.error});
+		}
+		return res.status(200).json({'Message': 'Farm found', 'Farm': farm});
+	} catch (error) {
+		return res.status(400).json({error: 'Bad Request'});
+	}
+};
+
 
 
 module.exports = {
 	createFarm,
 	getAllFarms,
 	updateFarm,
-	deleteFarm
+	deleteFarm,
+	getFarmById
 };

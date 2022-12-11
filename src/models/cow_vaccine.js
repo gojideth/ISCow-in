@@ -1,5 +1,7 @@
 const sequelize = require('sequelize');
 const db = require('../util/db');
+const Check = require('./check');
+const Vaccine = require('./vaccine');
 
 const CowVaccine = db.define(
 	'cows_vaccine',
@@ -16,5 +18,7 @@ const CowVaccine = db.define(
 	}
 );
 
+//CowVaccine.belongsTo(Check, {foreignKey: 'cow_vaccines_id'});
+CowVaccine.hasMany(Vaccine, {foreignKey: 'check_id'});
 
 module.exports = CowVaccine;

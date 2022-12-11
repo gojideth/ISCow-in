@@ -86,9 +86,33 @@ const deleteFarm = async (id)=>{
 	}
 };
 
+//* Get a single FARM
+const getFarm = async (id)=>{
+	console.log('getFarm: [GET] /farms/');
+	try {
+		try {
+			const farm = await Farm.findOne({where: {id: id}});
+			console.log('Ok getFarm: ', {farm});
+			return (farm);
+		} catch (error) {
+			console.log('Error in getFarm: ' + 'Farm: ', error);
+			return {error: error};
+		}
+	}
+	catch (error) {
+		return {error: 'Bad Request'};
+	}
+};
+
+
+
+
+
+
 module.exports = {
 	createFarm,
 	getAllFarms,
 	updateFarm,
-	deleteFarm
+	deleteFarm,
+	getFarm
 };

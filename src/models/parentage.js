@@ -1,5 +1,6 @@
 const sequelize = require('sequelize');
 const db = require('../util/db');
+const Cow = require('./cow');
 
 const Parentage = db.define(
 	'parentages',

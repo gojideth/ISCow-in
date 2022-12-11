@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../util/db');
 const bcrypt = require('bcrypt');
+const Farm = require('./farm');
 const Person = db.define(
 	'persons',
 	{
@@ -46,5 +47,6 @@ const Person = db.define(
 		}
 	}
 );
-
+Person.hasMany(Farm, { foreignKey: 'person_id' });
+Farm.belongsTo(Person, { foreignKey: 'person_id' });
 module.exports = Person;

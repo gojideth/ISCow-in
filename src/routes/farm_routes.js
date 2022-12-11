@@ -8,5 +8,6 @@ router.get('/', controller.getAllFarms);
 router.post('/create', controller.createFarm);
 router.put('/:id', controller.updateFarm);
 router.delete('/:id', controller.deleteFarm);
+router.get('/:id', controller.getFarmById);
 
 module.exports = router;

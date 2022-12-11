@@ -25,5 +25,6 @@ const Farm = db.define(
 );
 
 Farm.hasMany(Plot, {foreignKey: 'farm_id'});
+Plot.belongsTo(Farm, {foreignKey: 'farm_id'});
 
 module.exports = Farm;

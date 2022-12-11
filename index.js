@@ -2,7 +2,7 @@ const listCows= async ()=>{
 	const response= await fetch('http://127.0.0.1:3001/cows');
 	const cows = await response.json();
 
-	const finalCows = cows.cows;
+	const finalCows = cows.allCows;
 	finalCows.forEach((cow, index)=>{
 		var tdRace= document.createElement('td');
 		var tdIndex= document.createElement('td');
@@ -14,7 +14,7 @@ const listCows= async ()=>{
 		if(cow.origin ==='natural'){
 			tdOrigin.innerHTML = '<i class="fa-solid fa-leaf"></i>';
 		}else{
-			tdOrigin.innerHTML = '<i class="fa-solid fa-leaf"></i>';
+			tdOrigin.innerHTML = '<i class="fa-solid fa-money-bill"></i>';
 		}
 		var tr = document.createElement('tr');
 		tdIndex.innerHTML = index+1;
@@ -30,7 +30,7 @@ const listCows= async ()=>{
 		tr.appendChild(tdAge);
 		tr.appendChild(tdOrigin);
 		tr.appendChild(tdActions);
-		document.getElementById('tableBody_Vacas').appendChild(tr);
+		document.getElementById('tableBody_Cows').appendChild(tr);
 
 	});
 };

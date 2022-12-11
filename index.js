@@ -78,6 +78,18 @@ const listFincas= async ()=>{
 			alert('Eliminar');
 			deleteFunction(finca.id, 'farms');
 		});
+		buttonEdit.addEventListener('click', ()=>{
+			//setPlaceholders(finca.farm_name, finca.farm_location, finca.farm_size);
+			editFunction(finca.id, 'farms');
+		});
+		var buttonAddFarm = document.getElementById('addFarm');
+		buttonAddFarm.addEventListener('click', ()=>{
+			event.preventDefault();
+			var jsonString = JSON.stringify(new FormData(document.getElementById('formAddFarm')));
+			var farm = JSON.parse(jsonString);
+			console.log(farm);
+			addFunction(farm);
+		});
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
 		tdActions.appendChild(buttonView);
@@ -182,5 +194,20 @@ const deleteFunction = async (id, endpoint) => {
 	});
 };
 
+const editFunction = async (id, endpoint) => {
+	await fetch(`http://${HOST}/${endpoint}/${id}`, {
+		method: 'PUT',
+	}).then((response) => {
+		window.alert('Vaca editada'+response);
+	});
+};
+
+const addFunction = async (endpoint) => {
+	await fetch(`http://${HOST}/${endpoint}/create`, {
+		method: 'POST',
+	}).then((response) => {
+		window.alert('Vaca agregada'+response);
+	});
+};
 const radioButtonsCow = document.querySelectorAll('input[name="radioorigen"]');
 radioButtonsCow.forEach(radio => radio.addEventListener('click', handleRadioClickCow));

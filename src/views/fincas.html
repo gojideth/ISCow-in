@@ -76,7 +76,7 @@
             <div class="modal-dialog modal-dialog-centered modal-md">
                 <div class="modal-content">
                     <div class="seccion contenedor">
-                        <form>
+                        <form id="formAddFarm">
                             <div class="modal-header">
                                 <h4 class="modal-title">Agregar Finca</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
@@ -85,17 +85,23 @@
                                 <div class="col-md-10 pb-2">
                                     <div class="form-outline">
                                         <label class="form-label">Nombre</label>
-                                        <input type="text" id="fincaname" class="form-control form-control-lg" />
+                                        <input type="text" id="farmName" class="form-control form-control-lg" />
                                     </div>
                                 </div>
                                 <div class="col-md-10 pb-2">
                                     <div class="form-outline">
                                         <label class="form-label">Dirección</label>
-                                        <input type="text" id="fincaname" class="form-control form-control-lg" />
+                                        <input type="text" id="farmLocation" class="form-control form-control-lg" />
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Tamaño en m2</label>
+                                        <input type="text" id="farmSize" class="form-control form-control-lg" />
                                     </div>
                                 </div>
                                 <div class="col-md-10 pb-2" id="buttonAddFinca">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewCow">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewCow" id="addCow">
                                         Agregar
                                     </button>
                                 </div>

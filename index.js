@@ -1,3 +1,5 @@
+const HOST = '127.0.0.1:3001';
+
 const listCows= async ()=>{
 	const response= await fetch('http://127.0.0.1:3001/cows');
 	const cows = await response.json();
@@ -59,6 +61,16 @@ const listFincas= async ()=>{
 		buttonEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
 		buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
 		buttonView.innerHTML = '<i class="fa-regular fa-eye"></i>';
+		buttonEdit.className = 'btn btn-m btn-primary';
+		buttonDelete.className = 'btn btn-m btn-danger';
+		buttonView.className = 'btn btn-m btn-success';
+		buttonView.addEventListener('click', ()=>{
+			window.location.href = 'http://127.0.0.1:5500/src/views/lotes.html';
+		});
+		buttonDelete.addEventListener('click', ()=>{
+			alert('Eliminar');
+			deleteFunction(finca.id);
+		});
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
 		tdActions.appendChild(buttonView);
@@ -139,6 +151,15 @@ function handleRadioClickCow() {
 		hidePadres.style.display = 'none';
 	}
 }
+
+const deleteFunction = async (id) => {
+	console.log(id);
+	await fetch(`http://${HOST}/cows/${id}`, {
+		method: 'DELETE',
+	}).then((response) => {
+		window.alert('Vaca eliminada'+response);
+	});
+};
 
 const radioButtonsCow = document.querySelectorAll('input[name="radioorigen"]');
 radioButtonsCow.forEach(radio => radio.addEventListener('click', handleRadioClickCow));

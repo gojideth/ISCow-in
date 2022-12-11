@@ -10,10 +10,9 @@ const createFarm = async(farm)=>{
 	console.log('farm : ', farm);
 	try {
 		const FARM_MODEL = {
-			name: farm.name,
-			address: farm.address,
-			phone: farm.phone,
-			email: farm.email,
+			farm_name: farm.farm_name,
+			farm_location: farm.farm_location,
+			farm_size: farm.farm_size,
 			person_id: farm.person_id
 		};
 		try {

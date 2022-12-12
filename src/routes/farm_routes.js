@@ -9,5 +9,6 @@ router.post('/create', controller.createFarm);
 router.put('/:id', controller.updateFarm);
 router.delete('/:id', controller.deleteFarm);
 router.get('/:id', controller.getFarmById);
+router.get('/number/:id', controller.getFarmPlots);
 
 module.exports = router;

@@ -75,6 +75,21 @@ const getFarmById = async(req, res)=>{
 	}
 };
 
+//*GET all plots by farm ID: [GET] /farms/number/:id
+const getFarmPlots = async(req, res)=>{
+	console.log('getFarmPlots: [GET] /farms/:id/plots');
+	try {
+		const farm = await farmService.getFarmPlots(req.params.id);
+		console.log('body: ', req.body);
+		if(farm.error){
+			return res.status(400).json({' Bad Request': farm.error});
+		}
+		return res.status(200).json({'Message': 'Farm found', 'Farm': farm});
+	} catch (error) {
+		return res.status(400).json({error: 'Bad Request'});
+	}
+};
+
 
 
 module.exports = {
@@ -82,5 +97,6 @@ module.exports = {
 	getAllFarms,
 	updateFarm,
 	deleteFarm,
-	getFarmById
+	getFarmById,
+	getFarmPlots
 };

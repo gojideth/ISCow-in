@@ -104,6 +104,23 @@ const getFarm = async (id)=>{
 	}
 };
 
+//* Get all plots from a single FARM
+const getFarmPlots = async (id)=>{
+	console.log('getFarmPlots: [GET] /farms/number/:id');
+	try {
+		try {
+			const farm = await Farm.findOne({where: {id}});
+			console.log('Ok getFarmPlots: ', {farm});
+			return (farm);
+		} catch (error) {
+			console.log('Error in getFarmPlots: ' + 'Farm: ', error);
+			return {error: error};
+		}
+	}
+	catch (error) {
+		return {error: 'Bad Request'};
+	}
+};
 
 
 
@@ -114,5 +131,6 @@ module.exports = {
 	getAllFarms,
 	updateFarm,
 	deleteFarm,
-	getFarm
+	getFarm,
+	getFarmPlots
 };

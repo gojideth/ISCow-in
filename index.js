@@ -94,10 +94,10 @@ const listFincas= async ()=>{
 	});
 };
 
-var modal = document.getElementById('modalAddFarm');
-var btnAdd = modal.querySelector('.btn');
+var modalAddFarm = document.getElementById('modalAddFarm');
+var btnAdd = modalAddFarm.querySelector('.btn');
 btnAdd.addEventListener('click', () => {
-	var form = modal.querySelector('#formAddFarm');
+	var form = modalAddFarm.querySelector('#formAddFarm');
 	var formData = new FormData(form);
 	var data = {};
 	for (var [key, value] of formData.entries()) {

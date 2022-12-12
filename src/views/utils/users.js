@@ -52,9 +52,26 @@ const createJSONFromForm = (form) => {
 	return JSON.stringify(object);
 };
 
+const createUser = async (user) => {
+	var form = document.querySelector('#formAddUser');
+	var data = createJSONFromForm(form);
+	data = JSON.parse(data);
+	console.log(data);
+	const response = await fetch(`http://${HOST}/persons/create`, {
+		method: 'POST',
+		body: JSON.stringify(data),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+	window.alert('Usuario creado');
+	window.location.reload();
+};
+
+
 var btn = document.querySelector('#buttonAddUser');
 btn.addEventListener('click', () => {
-	console.log(createJSONFromForm(document.querySelector('#formAddUser')));
+	createUser(createJSONFromForm(document.querySelector('#formAddUser')));
 });
 
 window.addEventListener('load', function() {

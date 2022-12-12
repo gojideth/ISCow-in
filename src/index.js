@@ -57,12 +57,6 @@ app.use('/cow_weights', require('./routes/provisional/cow_weight_routes'));
 //*PARENTAGE	
 app.use('/parentage', require('./routes/provisional/parentage_routes'));
 
-
-
-
-
-
-
 (async () => {
 	try {
 		await sequelize.sync(

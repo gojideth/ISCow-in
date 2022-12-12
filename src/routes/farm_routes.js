@@ -11,6 +11,7 @@ router.delete('/:id', controller.deleteFarm);
 router.get('/:id', controller.getFarmById);
 //* Get all plots from a single farm
 router.get('/number/:id', controller.getFarmPlots);
+
 //*Get all farms from a single person
 router.get('/person/:id', controller.getFarmsByUser);
 

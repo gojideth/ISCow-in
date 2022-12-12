@@ -23,6 +23,7 @@ const login = async () => {
 	console.log(response);
 	const data = await response.json();
 	personId = data.personId;
+	localStorage.setItem('personId', personId);
 	if (response.status === 200) {
 		window.location.replace('./fincas.html');
 		return personId;

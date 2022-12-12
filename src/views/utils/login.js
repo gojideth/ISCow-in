@@ -1,20 +1,19 @@
-const HOST = '127.0.0.1:3001';
 var personId;
 
 const getUserCredentials = (form) => {
-	const formData = new FormData(form);
+	var formData = new FormData(form);
 	const data = {};
 	for (var [key, value] of formData.entries()) {
 		data[key] = value;
 	}
-	const jsonString = JSON.stringify(data);
-	console.log(jsonString);
-	return JSON.parse(jsonString);
+	return data;
 };
 
 const login = async () => {
-	const user = getUserCredentials(document.getQuerySelector('#formLogin'));
-	const response = await fetch(`http://${HOST}/persons/login`, {
+	var loginForm = document.querySelector('#formLogin');
+	const user = getUserCredentials(loginForm);
+	console.log(user);
+	const response = await fetch('http://127.0.0.1:3001/persons/login', {
 		method: 'POST',
 		body: JSON.stringify(user),
 	});
@@ -28,6 +27,7 @@ const login = async () => {
 };
 
 var btnLogin = document.querySelector('#buttonLogin');
-btnLogin.addEventListener('click', () => {
+btnLogin.addEventListener('click', (e) => {
+	e.preventDefault();
 	login();
 });

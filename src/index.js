@@ -66,7 +66,7 @@ app.use('/parentage', require('./routes/provisional/parentage_routes'));
 (async () => {
 	try {
 		await sequelize.sync(
-			{ force: true} //Reset db every time
+			{ force: false} //Reset db every time
 		);
 		console.log('Listening on PORT: ' + process.env.EXTERNAL_PORT);
 		app.listen(process.env.EXTERNAL_PORT); //DEF in docker.compose.yml

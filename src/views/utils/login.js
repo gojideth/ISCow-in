@@ -1,4 +1,3 @@
-var personId;
 
 const getUserCredentials = (form) => {
 	var formData = new FormData(form);
@@ -12,21 +11,20 @@ const getUserCredentials = (form) => {
 const login = async () => {
 	var loginForm = document.querySelector('#formLogin');
 	const user = getUserCredentials(loginForm);
-	console.log(user);
 	const response = await fetch('http://127.0.0.1:3001/persons/login', {
 		method: 'POST',
 		body: JSON.stringify(user),
 		headers: {
 			'Content-Type': 'application/json'
 		}
+	}).then((response) => {
+		return response;
 	});
-	console.log(response);
 	const data = await response.json();
-	personId = data.personId;
-	localStorage.setItem('personId', personId);
-	if (response.status === 200) {
+	console.log(data);
+	if (data.Login === 'Success') {
 		window.location.replace('./fincas.html');
-		return personId;
+		localStorage.setItem('personId', response.User.id);
 	} else {
 		window.alert('Usuario o contraseña incorrectos');
 	}

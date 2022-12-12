@@ -85,7 +85,6 @@ const listLotes= async ()=>{
 
 window.addEventListener('load', function() {
 	listCows();
-	listFincas();
 	listLotes();
 });
 

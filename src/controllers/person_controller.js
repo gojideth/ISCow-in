@@ -70,7 +70,7 @@ const login = async (req, res) => {
 			});
 		}
 		const user = await personService.login(email, password);
-		return res.status(200).json({'Login uuu': ' Success', 'User': user });
+		return res.status(200).json({'Login': 'Success', 'User': user });
 	} catch (err) {
 		return res.status(500).json({
 			error: 'Failed to login user'

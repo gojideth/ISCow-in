@@ -1,9 +1,8 @@
 const userId = localStorage.getItem('personId');
 const listFincas= async (id)=>{
-	const response= await fetch(`http://127.0.0.1/farms/person/${id}`);
+	const response= await fetch(`http://127.0.0.1:3001/farms/person/${id}`);
 	const fincas = await response.json();
-
-	const finalFincas = fincas.farms;
+	const finalFincas = fincas.Farm;
 	finalFincas.forEach((finca, index)=>{
 		var tdName= document.createElement('td');
 		var tdIndex= document.createElement('td');
@@ -52,6 +51,32 @@ const listFincas= async (id)=>{
 		}
 	});
 };
+
+const createJSONFromForm = (form) => {
+	const formData = new FormData(form);
+	var object = {};
+	formData.forEach((value, key) => {
+		object[key] = value;
+	});
+	return JSON.stringify(object);
+};
+
+const createFinca = async () => {
+	var form = document.querySelector('#formAddFarm');
+	const data = createJSONFromForm(form);
+	const response = await fetch('http://127.0.0.1:3001/farms/create', {
+		method: 'POST',
+		body: data,
+	}).then((response) => {
+		return response;
+	});	
+};
+		
+
+var btn = document.querySelector('#buttonAddFarm');
+btn.addEventListener('click', () => {
+	createFinca();
+});
 
 window.addEventListener('load', function() {
 	listFincas(userId);

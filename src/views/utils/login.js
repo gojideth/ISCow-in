@@ -16,11 +16,16 @@ const login = async () => {
 	const response = await fetch('http://127.0.0.1:3001/persons/login', {
 		method: 'POST',
 		body: JSON.stringify(user),
+		headers: {
+			'Content-Type': 'application/json'
+		}
 	});
+	console.log(response);
 	const data = await response.json();
-	personId = data.id;
-	if (personId !== undefined) {
-		window.alert('Bienvenido');
+	personId = data.personId;
+	if (response.status === 200) {
+		window.location.replace('./fincas.html');
+		return personId;
 	} else {
 		window.alert('Usuario o contraseña incorrectos');
 	}

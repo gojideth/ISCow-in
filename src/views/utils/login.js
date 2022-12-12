@@ -1,4 +1,3 @@
-
 const getUserCredentials = (form) => {
 	var formData = new FormData(form);
 	const data = {};

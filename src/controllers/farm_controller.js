@@ -99,7 +99,7 @@ const getFarmsByUser = async(req, res)=>{
 		if(farm.error){
 			return res.status(400).json({' Bad Request': farm.error});
 		}
-		return res.status(200).json({'Message': 'Farm found', 'Farm': farm});
+		return res.status(200).json({'Message': 'Success', 'Farm': farm});
 	} catch (error) {
 		return res.status(400).json({error: 'Bad Request'});
 	}

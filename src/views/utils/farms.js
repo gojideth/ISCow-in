@@ -29,10 +29,13 @@ const listFincas= async (id)=>{
 		const table = document.querySelector('#tableBody_Fincas');
 		table.addEventListener('click', (e)=>{
 			if(e.target.classList.contains('fa-eye')){
-				const tr = e.target.closest('tr');
-				const values = tr.querySelectorAll('td');
-				const id = values[0].textContent;
-				console.log(id);
+				const row = e.target.parentElement.parentElement.parentElement;
+				const objectid = row.querySelector('td').textContent;
+				const object = finalFincas.find((finca)=>{
+					var i =finalFincas.indexOf(finca) == objectid-1;
+					return i;
+				});
+				viewLotes(object.id);
 			}
 		});
 		buttonDelete.addEventListener('click', ()=>{
@@ -57,6 +60,9 @@ const listFincas= async (id)=>{
 		}
 	});
 };
+
+const viewLotes = async (id) => {
+	const response = await fetch(`http://127.0.0.1:3001/plots/${id}`);
 
 const createJSONFromForm = (form) => {
 	const formData = new FormData(form);

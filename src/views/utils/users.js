@@ -1,10 +1,12 @@
 const HOST = '127.0.0.1:3001';
 
+var response, users, finalUsers;
+
 
 const listUsers= async ()=>{
-	const response= await fetch('http://127.0.0.1:3001/persons/');
-	const users = await response.json();
-	const finalUsers = users.persons;
+	response= await fetch('http://127.0.0.1:3001/persons/');
+	users = await response.json();
+	finalUsers = users.persons;
 	finalUsers.forEach((user, index)=>{
 		var tdName= document.createElement('td');
 		var tdIndex= document.createElement('td');
@@ -27,6 +29,8 @@ const listUsers= async ()=>{
 		buttonEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
 		buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
 		buttonEdit.className = 'btn btn-m btn-primary';
+		buttonEdit.setAttribute('data-bs-toggle', 'modal');
+		buttonEdit.setAttribute('data-bs-target', '#modalEditUser');
 		buttonDelete.className = 'btn btn-m btn-danger';
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
@@ -52,12 +56,27 @@ const createJSONFromForm = (form) => {
 	return JSON.stringify(object);
 };
 
-const createUser = async (user) => {
+const table = document.querySelector('#tableBody_Users');
+table.addEventListener('click', (e) => {
+	if (e.target.classList.contains('fa-pen-to-square')) {
+		const row = e.target.parentElement.parentElement.parentElement;
+		const id = row.querySelector('td').textContent;
+		const object = finalUsers.find((user) =>{
+			var i = finalUsers.indexOf(user) == id-1;
+			return i;
+		});
+		var btn = document.querySelector('#buttonEditUser');
+		btn.addEventListener('click', () => {
+			editUser(object.id);
+		});
+	}
+});
+
+const createUser = async () => {
 	var form = document.querySelector('#formAddUser');
 	var data = createJSONFromForm(form);
 	data = JSON.parse(data);
-	console.log(data);
-	const response = await fetch(`http://${HOST}/persons/create`, {
+	await fetch(`http://${HOST}/persons/create`, {
 		method: 'POST',
 		body: JSON.stringify(data),
 		headers: {
@@ -68,6 +87,27 @@ const createUser = async (user) => {
 	window.location.reload();
 };
 
+const editUser = async (id) => {
+	var form = document.querySelector('#formEditUser');
+	var data = createJSONFromForm(form);
+	data = JSON.parse(data);
+	const keys = Object.keys(data);
+	keys.forEach((key) => {
+		if (data[key] === '') {
+			delete data[key];
+		}
+	});
+	console.log(data);
+	await fetch(`http://${HOST}/persons/${id}`, {
+		method: 'PUT',
+		body: JSON.stringify(data),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+	window.alert('Usuario editado');
+	window.location.reload();
+};
 
 var btn = document.querySelector('#buttonAddUser');
 btn.addEventListener('click', () => {

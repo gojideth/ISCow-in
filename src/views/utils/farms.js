@@ -26,6 +26,7 @@ const listFincas= async (id)=>{
 		buttonEdit.className = 'btn btn-m btn-primary';
 		buttonDelete.className = 'btn btn-m btn-danger';
 		buttonView.className = 'btn btn-m btn-success';
+		
 		const table = document.querySelector('#tableBody_Fincas');
 		table.addEventListener('click', (e)=>{
 			if(e.target.classList.contains('fa-eye')){
@@ -35,7 +36,7 @@ const listFincas= async (id)=>{
 					var i =finalFincas.indexOf(finca) == objectid-1;
 					return i;
 				});
-				viewLotes(object.id);
+				console.log(object.id);
 			}
 		});
 		buttonDelete.addEventListener('click', ()=>{

@@ -61,13 +61,29 @@ const deletePerson = async(req, res)=>{
 	}
 };
 
+const login = async (req, res) => {
+	try {
+		const { email, password } = req.body;
+		if (!email || !password) {
+			return res.status(400).json({
+				error: 'Username and password are required'
+			});
+		}
+		const user = await personService.login(email, password);
+		return res.json(user);
+	} catch (err) {
+		return res.status(500).json({
+			error: 'Failed to login user'
+		});
+	}
+};
 
 module.exports = {
 	createPerson,
 	getAllPersons,
 	updatePerson,
-	deletePerson
+	deletePerson,
+	login
 };
 
-//TODO Missing the getOnePerson, updatePerson and deletePerson
 

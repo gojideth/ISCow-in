@@ -1,5 +1,5 @@
 const Person = require('../models/person');
-
+const bcrypt = require('bcrypt');
 /**
  * !CRUD Controllers
  */
@@ -95,11 +95,38 @@ const getPerson = async (id)=>{
 	}
 };
 
+//Create a login
+const login = async (email, password)=>{
+	console.log('login: [POST] /persons/login');
+	console.log('email : ', email);
+	console.log('password : ', password);
+	try {
+		const user = await Person.findOne({
+			where: {
+				email
+			},
+		});			
+		if (user) {
+			console.log('Ok login: ', {user});
+			const isValidPassword = await bcrypt.compare(password, user.password);
+			// If the password is valid, return the user object
+			if (isValidPassword) {
+				return user;
+			}
+		}
+	} catch (error) {
+		console.log('Error in getPerson: ' + 'Person: ', error);
+		return {error: error};
+	}
+};
+
+
 
 module.exports = {
 	createPerson,
 	getAllPersons,
 	updatePerson,
 	deletePerson,
-	getPerson
+	getPerson,
+	login
 };

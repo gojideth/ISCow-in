@@ -40,7 +40,7 @@ const Person = db.define(
 		hooks: {
 			beforeCreate: async (user) => {
 				if (user.password) {
-					const salt = await bcrypt.genSaltSync(10, 'a');
+					const salt =  bcrypt.genSaltSync(10, 'a');
 					user.password = bcrypt.hashSync(user.password, salt);
 				}
 			}	

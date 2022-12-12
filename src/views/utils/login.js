@@ -19,13 +19,10 @@ const login = async () => {
 	}).then((response) => {
 		return response;
 	});
-	console.log(response);
 	const data = await response.json();
-	console.log(data);
 	if (data.Login === 'Success') {
-		//window.location.replace('./fincas.html');
+		window.location.replace('./fincas.html');
 		localStorage.setItem('personId', data.User.id);
-		console.log(response.User.id);
 	} else {
 		window.alert('Usuario o contraseña incorrectos');
 	}

@@ -82,9 +82,6 @@ const listFincas= async ()=>{
 			//setPlaceholders(finca.farm_name, finca.farm_location, finca.farm_size);
 			editFunction(finca.id, 'farms');
 		});
-		//var form = document.getElementById('formAddFarm');
-
-
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
 		tdActions.appendChild(buttonView);
@@ -108,7 +105,7 @@ btnAdd.addEventListener('click', () => {
 	}
 	var jsonString = JSON.stringify(data);
 	var json = JSON.parse(jsonString);
-	console.log(json);
+	addFunction(json, 'farms');
 });
 
 const listUsers= async ()=>{
@@ -211,9 +208,10 @@ const editFunction = async (id, endpoint) => {
 	});
 };
 
-const addFunction = async (endpoint) => {
+const addFunction = async (json, endpoint) => {
 	await fetch(`http://${HOST}/${endpoint}/create`, {
 		method: 'POST',
+		body: json,
 	}).then((response) => {
 		window.alert('Vaca agregada'+response);
 	});

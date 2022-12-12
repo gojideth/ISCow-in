@@ -82,14 +82,9 @@ const listFincas= async ()=>{
 			//setPlaceholders(finca.farm_name, finca.farm_location, finca.farm_size);
 			editFunction(finca.id, 'farms');
 		});
-		var buttonAddFarm = document.getElementById('addFarm');
-		buttonAddFarm.addEventListener('click', ()=>{
-			event.preventDefault();
-			var jsonString = JSON.stringify(new FormData(document.getElementById('formAddFarm')));
-			var farm = JSON.parse(jsonString);
-			console.log(farm);
-			addFunction(farm);
-		});
+		//var form = document.getElementById('formAddFarm');
+
+
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
 		tdActions.appendChild(buttonView);
@@ -101,6 +96,20 @@ const listFincas= async ()=>{
 		document.getElementById('tableBody_Fincas').appendChild(tr);
 	});
 };
+
+var modal = document.getElementById('modalAddFarm');
+var btnAdd = modal.querySelector('.btn');
+btnAdd.addEventListener('click', () => {
+	var form = modal.querySelector('#formAddFarm');
+	var formData = new FormData(form);
+	var data = {};
+	for (var [key, value] of formData.entries()) {
+		data[key] = value;
+	}
+	var jsonString = JSON.stringify(data);
+	var json = JSON.parse(jsonString);
+	console.log(json);
+});
 
 const listUsers= async ()=>{
 	const response= await fetch('http://127.0.0.1:3001/persons');

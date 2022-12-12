@@ -50,7 +50,7 @@
 
     <section class="seccion contenedor">
         <div class="container ">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewFinca">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddFarm">
                 Agregar Finca
             </button>
             <div class="table-responsive">
@@ -72,7 +72,7 @@
     </section>
 
     <section class="seccion contenedor popup">
-        <div class="modal fade" id="modalNewFinca">
+        <div class="modal fade" id="modalAddFarm">
             <div class="modal-dialog modal-dialog-centered modal-md">
                 <div class="modal-content">
                     <div class="seccion contenedor">
@@ -85,23 +85,23 @@
                                 <div class="col-md-10 pb-2">
                                     <div class="form-outline">
                                         <label class="form-label">Nombre</label>
-                                        <input type="text" id="farmName" class="form-control form-control-lg" />
+                                        <input type="text" id="farm_name" class="form-control form-control-lg" name="farm_name"/>
                                     </div>
                                 </div>
                                 <div class="col-md-10 pb-2">
                                     <div class="form-outline">
                                         <label class="form-label">Dirección</label>
-                                        <input type="text" id="farmLocation" class="form-control form-control-lg" />
+                                        <input type="text" id="farm_location" class="form-control form-control-lg" name="farm_location"/>
                                     </div>
                                 </div>
                                 <div class="col-md-10 pb-2">
                                     <div class="form-outline">
                                         <label class="form-label">Tamaño en m2</label>
-                                        <input type="text" id="farmSize" class="form-control form-control-lg" />
+                                        <input type="text" id="farm_size" class="form-control form-control-lg" name="farm_size"/>
                                     </div>
                                 </div>
-                                <div class="col-md-10 pb-2" id="buttonAddFinca">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewCow" id="addCow">
+                                <div class="col-md-10 pb-2">
+                                    <button type="button" class="btn btn-primary" id="addNewFarm">
                                         Agregar
                                     </button>
                                 </div>

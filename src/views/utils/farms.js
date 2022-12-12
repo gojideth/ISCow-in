@@ -61,8 +61,8 @@ const listFincas= async (id)=>{
 	});
 };
 
-const viewLotes = async (id) => {
-	const response = await fetch(`http://127.0.0.1:3001/plots/${id}`);
+
+
 
 const createJSONFromForm = (form) => {
 	const formData = new FormData(form);

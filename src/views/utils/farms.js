@@ -10,6 +10,7 @@ const listFincas= async (id)=>{
 		var tdSize= document.createElement('td');
 		var tdLotes = document.createElement('td');
 		var tdActions= document.createElement('td');
+		var id = document.createElement('td');
 		var tr = document.createElement('tr');
 		tdIndex.innerHTML = index+1;
 		tdName.innerHTML = finca.farm_name;
@@ -25,10 +26,17 @@ const listFincas= async (id)=>{
 		buttonEdit.className = 'btn btn-m btn-primary';
 		buttonDelete.className = 'btn btn-m btn-danger';
 		buttonView.className = 'btn btn-m btn-success';
-
-		buttonView.addEventListener('click', ()=>{
-			window.location.href = 'http://127.0.0.1:5500/src/views/lotes.html';
+		const table = document.querySelector('#tableBody_Fincas');
+		table.addEventListener('click', (e)=>{
+			if(e.target.classList.contains('fa-eye')){
+				const tr = e.target.closest('tr');
+				const values = tr.querySelectorAll('td');
+				const id = values[0].textContent;
+				console.log(id);
+			}
 		});
+
+
 		buttonDelete.addEventListener('click', ()=>{
 			alert('Eliminar');
 			deleteFunction(finca.id, 'farms');

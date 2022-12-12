@@ -64,10 +64,15 @@ const createJSONFromForm = (form) => {
 const createFinca = async () => {
 	var form = document.querySelector('#formAddFarm');
 	var data = createJSONFromForm(form);
-	data.personId =  localStorage.getItem('personId');
+	data = JSON.parse(data);
+	data.person_id =  localStorage.getItem('personId');
+	console.log(data);
 	const response = await fetch('http://127.0.0.1:3001/farms/create', {
 		method: 'POST',
-		body: data,
+		body: JSON.stringify(data),
+		headers: {
+			'Content-Type': 'application/json'
+		}
 	}).then((response) => {
 		return response;
 	});	

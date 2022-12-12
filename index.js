@@ -39,7 +39,10 @@ const listCows= async ()=>{
 		tr.appendChild(tdAge);
 		tr.appendChild(tdOrigin);
 		tr.appendChild(tdActions);
-		document.getElementById('tableBody_Cows').appendChild(tr);
+		const tableBody = document.getElementById('tableBody_Cows');
+		if (tableBody) {
+			tableBody.appendChild(tr);
+		}
 
 	});
 };
@@ -90,7 +93,10 @@ const listFincas= async ()=>{
 		tr.appendChild(tdAddress);
 		tr.appendChild(tdLotes);
 		tr.appendChild(tdActions);
-		document.getElementById('tableBody_Fincas').appendChild(tr);
+		const tableBody = document.getElementById('tableBody_Fincas');
+		if (tableBody) {
+			tableBody.appendChild(tr);
+		}
 	});
 };
 
@@ -99,9 +105,7 @@ const listFincas= async ()=>{
 const listUsers= async ()=>{
 	const response= await fetch('http://127.0.0.1:3001/persons/');
 	const users = await response.json();
-	console.log(users);
 	const finalUsers = users.persons;
-	console.log(finalUsers);
 	finalUsers.forEach((user, index)=>{
 		var tdName= document.createElement('td');
 		var tdIndex= document.createElement('td');
@@ -133,7 +137,10 @@ const listUsers= async ()=>{
 		tr.appendChild(tdEmail);
 		tr.appendChild(tdAdmin);
 		tr.appendChild(tdActions);
-		document.getElementById('tableBody_Users').appendChild(tr);
+		const tableBody = document.getElementById('tableBody_Users');
+		if (tableBody) {
+			tableBody.appendChild(tr);
+		}
 	});
 };
 
@@ -165,7 +172,11 @@ const listLotes= async ()=>{
 		tr.appendChild(tdArea);
 		tr.appendChild(tdVacas);
 		tr.appendChild(tdActions);
-		document.getElementById('tableBody_Lotes').appendChild(tr);
+		const tableBody = document.getElementById('tableBody_Lotes');
+		if (tableBody) {
+			tableBody.appendChild(tr);
+		}
+
 	});
 };
 
@@ -176,19 +187,22 @@ window.addEventListener('load', function() {
 	listLotes();
 });
 
-var modalAddFarm = document.getElementById('modalAddFarm');
-var btnAdd = modalAddFarm.querySelector('.btn');
-btnAdd.addEventListener('click', () => {
-	var form = modalAddFarm.querySelector('#formAddFarm');
-	var formData = new FormData(form);
-	var data = {};
-	for (var [key, value] of formData.entries()) {
-		data[key] = value;
-	}
-	var jsonString = JSON.stringify(data);
-	var json = JSON.parse(jsonString);
-	addFunction(json, 'farms');
-});
+const modalAddFarm = document.querySelector('.modalAddFarm');
+if (modalAddFarm) {
+	var btnAdd = modalAddFarm.querySelector('.btn');
+	btnAdd.addEventListener('click', () => {
+		var form = modalAddFarm.querySelector('#formAddFarm');
+		var formData = new FormData(form);
+		var data = {};
+		for (var [key, value] of formData.entries()) {
+			data[key] = value;
+		}
+		var jsonString = JSON.stringify(data);
+		var json = JSON.parse(jsonString);
+		addFunction(json, 'farms');
+	});
+}
+
 
 const hidePadres = document.getElementById('hidePadres');
 
@@ -201,7 +215,6 @@ function handleRadioClickCow() {
 }
 
 const deleteFunction = async (id, endpoint) => {
-	console.log(id);
 	await fetch(`http://${HOST}/${endpoint}/${id}`, {
 		method: 'DELETE',
 	}).then((response) => {

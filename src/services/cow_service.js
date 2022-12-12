@@ -13,7 +13,8 @@ const createCow = async (cow) => {
 			race : cow.race,
 			born_date : cow.born_date,
 			gender : cow.gender,
-			origin : cow.origin
+			origin : cow.origin,
+			plot_id : cow.plot_id
 		};
 		try {
 			const cow = await Cow.create(COW_MODEL);
@@ -50,7 +51,8 @@ const updateCow = async (cow, id) => {
 			race : cow.race,
 			born_date : cow.born_date,
 			gender : cow.gender,
-			origin : cow.origin
+			origin : cow.origin,
+			plot_id : cow.plot_id
 		};
 		try {
 			const cow = await Cow.update(COW_MODEL, {where: {id: id}});
@@ -93,10 +95,26 @@ const getCow = async (id) => {
 	}
 };
 
+//* Get number of cows inside a plot by plot_id
+const getCowsByPlot = async (plot_id) => {
+	console.log('getCowsByPlot: [GET] /cows/');
+	console.log('plot_id : ', plot_id);
+	try {
+		const cow = await Cow.count({where: {plot_id: plot_id}});
+		console.log('Ok getCowsByPlot: ', {cow});
+		return cow;
+	} catch (error) {
+		console.log('Error in getCowsByPlot: ' + 'Cow: ', error);
+		return {error: error};
+	}
+};
+
+
 module.exports = {
 	createCow,
 	getAllCows,
 	updateCow,
 	deleteCow,
-	getCow
+	getCow,
+	getCowsByPlot
 };

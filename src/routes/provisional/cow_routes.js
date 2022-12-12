@@ -9,5 +9,6 @@ router.post('/create', controller.createCow);
 router.put('/:id', controller.updateCow);
 router.delete('/:id', controller.deleteCow);
 router.get('/:id', controller.getCow);
+router.get('/number/:id', controller.getCowCountByPlot);
 
 module.exports = router;

@@ -10,7 +10,7 @@ const createParentage = async(parentage)=>{
 	console.log('parentage : ', parentage);
 	try {
 		const PARENTAGE_MODEL = {
-			id : parentage.id,
+			cow_id : parentage.cow_id,
 		};
 		try {
 			const parentage = await Parentage.create(PARENTAGE_MODEL);
@@ -46,7 +46,7 @@ const updateParentage = async (parentageData, id)=>{
 	console.log('parentage : ', parentageData);
 	try {
 		const PARENTAGE_MODEL = {
-			id : parentageData.id,
+			cow_id : parentageData.cow_id,
 		};
 		try {
 			const parentage = await Parentage.update(PARENTAGE_MODEL, {where: {id: id}});

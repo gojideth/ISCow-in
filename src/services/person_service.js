@@ -1,5 +1,5 @@
 const Person = require('../models/person');
-
+const bcrypt = require('bcrypt');
 /**
  * !CRUD Controllers
  */
@@ -72,11 +72,50 @@ const deletePerson = async (id)=>{
 	console.log('deletePerson: [DELETE] /persons/:id');
 	console.log('personId : ', id);
 	try {
-		const User = await Person.destroy({where: {id: id}});
+		const User = await Person.destroy({where: {id}});
 		console.log('Ok deletePerson: ', {User});
 		return (User);
 	} catch (error) {
 		console.log('Error in deletePerson: ' + 'Person: ', error);
+		return {error: error};
+	}
+};
+
+//*Get a single PERSON
+const getPerson = async (id)=>{
+	console.log('getPerson: [GET] /persons/:id');
+	console.log('personId : ', id);
+	try {
+		const person = await Person.findOne({where: {id}});
+		console.log('Ok getPerson: ', {person});
+		return (person);
+	} catch (error) {
+		console.log('Error in getPerson: ' + 'Person: ', error);
+		return {error: error};
+	}
+};
+
+//Create a login
+const login = async (email, password)=>{
+	console.log('login: [POST] /persons/login');
+	console.log('email : ', email);
+	console.log('password : ', password);
+	try {
+		const user = await Person.findOne({
+			where: {
+				email
+			},
+		});			
+		if (user) {
+			console.log('Ok login: ', {user});
+			const isValidPassword = await bcrypt.compare(password, user.password);
+			// If the password is valid, return the user object
+			if (isValidPassword) {
+				return user;
+			}
+		}
+	} catch (error) {
+		console.log('Error in getPerson: ' + 'Person: ', error);
 		return {error: error};
 	}
 };
@@ -87,5 +126,7 @@ module.exports = {
 	createPerson,
 	getAllPersons,
 	updatePerson,
-	deletePerson
+	deletePerson,
+	getPerson,
+	login
 };

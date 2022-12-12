@@ -28,7 +28,7 @@ const getAllCows = async (req, res) => {
 		if (allCows.error) {
 			return res.status(400).json({ ' Bad Request': allCows.error });
 		}
-		return res.status(200).json(allCows);
+		return res.status(200).json({allCows});
 	} catch (error) {
 		return res.status(400).json({ error: 'Bad Request' });
 	}
@@ -79,10 +79,27 @@ const getCow = async (req, res) => {
 	}
 };
 
+//*GET count of all COWS by a plot_id
+const getCowCountByPlot = async (req, res) => {
+	console.log('getCowCountByPlot: [GET] /cows/plot/:id');
+	try {
+		const cowCount = await cowService.getCowsByPlot(req.params.id);
+		console.log('cowCount: ', cowCount);
+		if (cowCount.error) {
+			return res.status(400).json({ ' Bad Request': cowCount.error });
+		}
+		return res.status(200).json(cowCount);
+	} catch (error) {
+		return res.status(400).json({ error: 'Bad Request' });
+	}
+};
+
+
 module.exports = {
 	createCow,
 	getAllCows,
 	updateCow,
 	deleteCow,
 	getCow,
+	getCowCountByPlot
 };

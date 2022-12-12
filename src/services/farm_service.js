@@ -10,10 +10,9 @@ const createFarm = async(farm)=>{
 	console.log('farm : ', farm);
 	try {
 		const FARM_MODEL = {
-			name: farm.name,
-			address: farm.address,
-			phone: farm.phone,
-			email: farm.email,
+			farm_name: farm.farm_name,
+			farm_location: farm.farm_location,
+			farm_size: farm.farm_size,
 			person_id: farm.person_id
 		};
 		try {
@@ -49,9 +48,10 @@ const updateFarm = async (farmData, id)=>{
 	console.log('farm : ', farmData);
 	try {
 		const FARM_MODEL = {
-			farm_name : farmData.farm_name,
-			farm_location : farmData.farm_location,
-			farm_size : farmData.farm_size
+			farm_name: farmData.farm_name,
+			farm_location: farmData.farm_location,
+			farm_size: farmData.farm_size,
+			person_id: farmData.person_id
 		};
 
 		try {
@@ -73,7 +73,7 @@ const deleteFarm = async (id)=>{
 	console.log('deleteFarm: [DELETE] /farms/');
 	try {
 		try {
-			const farm = await Farm.destroy({where: {id: id}});
+			const farm = await Farm.destroy({where:{id}});
 			console.log('Ok deleteFarm: ', {farm});
 			return (farm);
 		} catch (error) {
@@ -91,7 +91,7 @@ const getFarm = async (id)=>{
 	console.log('getFarm: [GET] /farms/');
 	try {
 		try {
-			const farm = await Farm.findOne({where: {id: id}});
+			const farm = await Farm.findOne({where: {id}});
 			console.log('Ok getFarm: ', {farm});
 			return (farm);
 		} catch (error) {
@@ -104,7 +104,41 @@ const getFarm = async (id)=>{
 	}
 };
 
+//* Get all plots from a single FARM
+const getFarmPlots = async (id)=>{
+	console.log('getFarmPlots: [GET] /farms/number/:id');
+	try {
+		try {
+			const farm = await Farm.findAll({where: {id}});
+			console.log('Ok getFarmPlots: ', {farm});
+			return (farm);
+		} catch (error) {
+			console.log('Error in getFarmPlots: ' + 'Farm: ', error);
+			return {error: error};
+		}
+	}
+	catch (error) {
+		return {error: 'Bad Request'};
+	}
+};
 
+//*Get all farms from a single person
+const getFarmsFromPerson = async (id)=>{
+	console.log('getFarmsFromPerson: [GET] /farms/person/:id');
+	try {
+		try {
+			const farm = await Farm.findAll({where: {person_id: id}});
+			console.log('Ok getFarmsFromPerson: ', {farm});
+			return (farm);
+		} catch (error) {
+			console.log('Error in getFarmsFromPerson: ' + 'Farm: ', error);
+			return {error: error};
+		}
+	}
+	catch (error) {
+		return {error: 'Bad Request'};
+	}
+};
 
 
 
@@ -114,5 +148,7 @@ module.exports = {
 	getAllFarms,
 	updateFarm,
 	deleteFarm,
-	getFarm
+	getFarm,
+	getFarmPlots,
+	getFarmsFromPerson
 };

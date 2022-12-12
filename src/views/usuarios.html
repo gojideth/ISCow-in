@@ -78,7 +78,7 @@
             <div class="modal-dialog modal-dialog-centered modal-md">
                 <div class="modal-content">
                     <div class="seccion contenedor">
-                        <form>
+                        <form id="formAddUser">
                             <div class="modal-header">
                                 <h4 class="modal-title">Agregar Usuario</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
@@ -87,30 +87,30 @@
                                 <div class="col-md-10 pb-2">
                                     <div class="form-outline">
                                         <label class="form-label">Nombre</label>
-                                        <input type="text" id="userName" class="form-control form-control-lg" />
+                                        <input type="text" id="userName" class="form-control form-control-lg"  name="name"/>
                                     </div>
                                 </div>
                                 <div class="col-md-10 pb-2">
                                     <div class="form-outline">
                                         <label class="form-label">Apellido</label>
-                                        <input type="text" id="usarLastName" class="form-control form-control-lg" />
+                                        <input type="text" id="usarLastName" class="form-control form-control-lg"name="last_name" />
                                     </div>
                                 </div>
                                 <div class="col-md-10 pb-2">
                                     <div class="form-outline">
                                         <label class="form-label">Correo electrónico</label>
-                                        <input type="text" id="userEmail" class="form-control form-control-lg" />
+                                        <input type="text" id="userEmail" class="form-control form-control-lg"name= "email" />
                                     </div>
                                 </div>
                                 <div class="col-md-11 mb-4 pb-2">
                                     <div class="form-outline">
                                         <label class="form-label">Tipo de usuario</label><br>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioAdmin" value="administrador">
+                                            <input class="form-check-input" type="radio" name="is_admin" id="radioAdmin" value="administrador">
                                             <label class="form-check-label" for="inlineRadio1">Administrador</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioUser" value="usuario">
+                                            <input class="form-check-input" type="radio" name="is_admin_false" id="radioUser" value="usuario">
                                             <label class="form-check-label" for="inlineRadio2">Usuario comercial</label>
                                         </div>
                                     </div>
@@ -118,7 +118,7 @@
                                 <div class="col-md-10 pb-2">
                                     <div class="form-outline">
                                         <label class="form-label">Contraseña</label>
-                                        <input type="password" id="userPassword" class="form-control form-control-lg" />
+                                        <input type="password" id="userPassword" class="form-control form-control-lg" name="password"/>
                                     </div>
                                 </div>
                                 <div class="col-md-10 pb-2">
@@ -128,7 +128,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-10 pb-2" id="buttonAddFinca">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewCow">
+                                    <button type="button" class="btn btn-primary" id="buttonAddUser">
                                         Agregar
                                     </button>
                                 </div>
@@ -140,7 +140,7 @@
         </div>
     </section>
 
-    <footer class="footer ">
+    <footer class="footer fixed-bottom">
         <div class="contenedor contenedor-footer">
             <p class="copyright">ISCow-In &copy; 2021</p>
             <div class="contenedor-contacto">
@@ -150,6 +150,6 @@
     </footer>
     <!-- Bootstrap core JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="../../index.js"></script>
+    <script src="./utils/users.js"></script>
 </body>
 </html>

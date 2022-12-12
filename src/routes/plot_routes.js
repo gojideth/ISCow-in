@@ -9,5 +9,8 @@ router.post('/create', controller.createPlot);
 router.put('/:id', controller.updatePlot);
 router.delete('/:id', controller.deletePlot);
 router.get('/:id', controller.getPlot);
+router.get('/number/:id', controller.getNumberPlots);
+
+
 
 module.exports = router;

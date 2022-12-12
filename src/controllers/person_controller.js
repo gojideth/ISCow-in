@@ -50,7 +50,7 @@ const updatePerson = async(req, res)=>{
 const deletePerson = async(req, res)=>{
 	console.log('deletePerson: [DELETE] /persons/delete');
 	try {
-		const person = await personService.deletePerson(req.body);
+		const person = await personService.deletePerson(req.params.id);
 		console.log('body: ', req.body);
 		if(person.error){
 			return res.status(400).json({' Bad Request': person.error});
@@ -61,13 +61,29 @@ const deletePerson = async(req, res)=>{
 	}
 };
 
+const login = async (req, res) => {
+	try {
+		const { email, password } = req.body;
+		if (!email || !password) {
+			return res.status(400).json({
+				error: 'Username and password are required'
+			});
+		}
+		const user = await personService.login(email, password);
+		return res.status(200).json({'Login': 'Success', 'User': user });
+	} catch (err) {
+		return res.status(500).json({
+			error: 'Failed to login user'
+		});
+	}
+};
 
 module.exports = {
 	createPerson,
 	getAllPersons,
 	updatePerson,
-	deletePerson
+	deletePerson,
+	login
 };
 
-//TODO Missing the getOnePerson, updatePerson and deletePerson
 

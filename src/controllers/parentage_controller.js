@@ -28,7 +28,7 @@ const getAllParentages = async (req, res) => {
 		if (allParentages.error) {
 			return res.status(400).json({ ' Bad Request': allParentages.error });
 		}
-		return res.status(200).json(allParentages);
+		return res.status(200).json({allParentages});
 	} catch (error) {
 		return res.status(400).json({ error: 'Bad Request' });
 	}

@@ -8,7 +8,7 @@ const cowVaccineService = require('../services/cow_vaccine_service');
 const createCowVaccine = async (req, res) => {
 	console.log('createCowVaccine: [POST] /cow_vaccines/create');
 	try {
-		const cowVaccine = await cowVaccineService.createCowVaccine(req.body);
+		const cowVaccine = await cowVaccineService.createCow_vaccine(req.body);
 		console.log('body: ', req.body);
 		if (cowVaccine.error) {
 			return res.status(400).json({ ' Bad Request': cowVaccine.error });
@@ -23,12 +23,12 @@ const createCowVaccine = async (req, res) => {
 const getAllCowVaccines = async (req, res) => {
 	console.log('getAllCowVaccines: [GET] /cow_vaccines/');
 	try {
-		const allCowVaccines = await cowVaccineService.getAllCowVaccines();
+		const allCowVaccines = await cowVaccineService.getAllCow_vaccines();
 		console.log('allCowVaccines: ', allCowVaccines);
 		if (allCowVaccines.error) {
 			return res.status(400).json({ ' Bad Request': allCowVaccines.error });
 		}
-		return res.status(200).json(allCowVaccines);
+		return res.status(200).json({allCowVaccines});
 	} catch (error) {
 		return res.status(400).json({ error: 'Bad Request' });
 	}
@@ -38,7 +38,7 @@ const getAllCowVaccines = async (req, res) => {
 const updateCowVaccine = async (req, res) => {
 	console.log('updateCowVaccine: [PUT] /cow_vaccines/:id');
 	try {
-		const cowVaccine = await cowVaccineService.updateCowVaccine(req.body, req.params.id);
+		const cowVaccine = await cowVaccineService.updateCow_vaccine(req.body, req.params.id);
 		console.log('cowVaccine: ', cowVaccine);
 		if (cowVaccine.error) {
 			return res.status(400).json({ ' Bad Request': cowVaccine.error });
@@ -53,7 +53,7 @@ const updateCowVaccine = async (req, res) => {
 const deleteCowVaccine = async (req, res) => {
 	console.log('deleteCowVaccine: [DELETE] /cow_vaccines/:id');
 	try {
-		const cowVaccine = await cowVaccineService.deleteCowVaccine(req.params.id);
+		const cowVaccine = await cowVaccineService.deleteCow_vaccine(req.params.id);
 		console.log('cowVaccine: ', cowVaccine);
 		if (cowVaccine.error) {
 			return res.status(400).json({ ' Bad Request': cowVaccine.error });

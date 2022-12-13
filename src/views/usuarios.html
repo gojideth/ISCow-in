@@ -140,6 +140,73 @@
         </div>
     </section>
 
+    <section class="seccion contenedor popup">
+        <div class="modal fade" id="modalEditUser">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
+                    <div class="seccion contenedor">
+                        <form id="formEditUser">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar Usuario</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Nombre</label>
+                                        <input type="text" id="userName_e" class="form-control form-control-lg"  name="name"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Apellido</label>
+                                        <input type="text" id="usarLastName_e" class="form-control form-control-lg"name="last_name" />
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Correo electrónico</label>
+                                        <input type="text" id="userEmail_e" class="form-control form-control-lg"name= "email" />
+                                    </div>
+                                </div>
+                                <div class="col-md-11 mb-4 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Tipo de usuario</label><br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="is_admin" id="radioAdmin_e" value="true">
+                                            <label class="form-check-label" for="inlineRadio1">Administrador</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="is_admin" id="radioUser_e" value="false">
+                                            <label class="form-check-label" for="inlineRadio2">Usuario comercial</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Contraseña</label>
+                                        <input type="password" id="userPassword_e" class="form-control form-control-lg" name="password"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Confirmar Contraseña</label>
+                                        <input type="password" id="userConfirm_e" class="form-control form-control-lg" />
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2" >
+                                    <button type="button" class="btn btn-primary" id="buttonEditUser">
+                                        Editar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer fixed-bottom">
         <div class="contenedor contenedor-footer">
             <p class="copyright">ISCow-In &copy; 2021</p>

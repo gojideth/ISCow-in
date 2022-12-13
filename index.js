@@ -115,21 +115,6 @@ function handleRadioClickCow() {
 	}
 }
 
-const deleteFunction = async (id, endpoint) => {
-	await fetch(`http://${HOST}/${endpoint}/${id}`, {
-		method: 'DELETE',
-	}).then((response) => {
-		window.alert('Vaca eliminada'+response);
-	});
-};
-
-const editFunction = async (id, endpoint) => {
-	await fetch(`http://${HOST}/${endpoint}/${id}`, {
-		method: 'PUT',
-	}).then((response) => {
-		window.alert('Vaca editada'+response);
-	});
-};
 
 const addFunction = async (json, endpoint) => {
 	await fetch(`http://${HOST}/${endpoint}/create`, {

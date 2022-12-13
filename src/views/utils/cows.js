@@ -36,6 +36,8 @@ const listCows= async ()=>{
 		buttonWeight.className = 'btn btn-m btn-success';
 		buttonEdit.setAttribute('data-bs-toggle', 'modal');
 		buttonEdit.setAttribute('data-bs-target', '#modalEditCow');
+		buttonWeight.setAttribute('data-bs-toggle', 'modal');
+		buttonWeight.setAttribute('data-bs-target', '#modalAddWeight');
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
 		tdActions.appendChild(buttonWeight);

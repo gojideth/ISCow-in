@@ -11,7 +11,6 @@ const createCow_weight = async(cow_weight)=>{
 	try {
 		const COW_WEIGHT_MODEL = {
 			weight : cow_weight.weight,
-			weight_date : cow_weight.weight_date,
 			cow_id : cow_weight.cow_id
 		};
 		try {
@@ -49,7 +48,6 @@ const updateCow_weight = async (cow_weightData, id)=>{
 	try {
 		const COW_WEIGHT_MODEL = {
 			weight : cow_weightData.weight,
-			weight_date : cow_weightData.weight_date,
 			cow_id : cow_weightData.cow_id
 
 		};

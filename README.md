@@ -3,13 +3,12 @@ ISCow-in is a manager for cow farms.
 Made by:
   Martin Chiquillo
   Miguel Rubiano
-  Santiago Rivera 
 UPTC.
 
 How to use it?
 1. Download the project.
 ```
-git clone git@github.com:gojideth/ISCow-in.git'''
+git clone git@github.com:gojideth/ISCow-in.git
 ```
 2. Setup docker DB
 ```

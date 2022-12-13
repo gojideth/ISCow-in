@@ -20,23 +20,27 @@ const listCows= async ()=>{
 		tdBornDate.innerHTML = cow.born_date;
 		tdAge.innerHTML = obtainAgeCow(cow.born_date);
 		tdOrigin.innerHTML = cow.origin;	
-		
-
+		if(cow.origin ==='natural'){
+			tdOrigin.innerHTML = '<i class="fa-solid fa-leaf"></i>';
+		}else{
+			tdOrigin.innerHTML = '<i class="fa-solid fa-money-bill"></i>';
+		}
 		var buttonEdit = document.createElement('button');
 		var buttonDelete = document.createElement('button');
-		var buttonView = document.createElement('button');
-
+		var buttonWeight = document.createElement('button');
+		buttonWeight.innerHTML = '<i class="fa-solid fa-weight"></i>';
 		buttonEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
 		buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-		buttonView.innerHTML = '<i class="fa-regular fa-eye"></i>';
-
 		buttonEdit.className = 'btn btn-m btn-primary';
-		buttonView.className = 'btn btn-m btn-success';
 		buttonDelete.className = 'btn btn-m btn-danger';
-
+		buttonWeight.className = 'btn btn-m btn-success';
+		buttonEdit.setAttribute('data-bs-toggle', 'modal');
+		buttonEdit.setAttribute('data-bs-target', '#modalEditCow');
+		buttonWeight.setAttribute('data-bs-toggle', 'modal');
+		buttonWeight.setAttribute('data-bs-target', '#modalAddWeight');
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
-		tdActions.appendChild(buttonView);
+		tdActions.appendChild(buttonWeight);
 		tr.appendChild(tdIndex);
 		tr.appendChild(tdRace);
 		tr.appendChild(tdGender);
@@ -52,6 +56,111 @@ const listCows= async ()=>{
 	});
 };
 
+const createJSONFromForm = (form) => {
+	const formData = new FormData(form);
+	var object = {};
+	formData.forEach((value, key) => {
+		object[key] = value;
+	});
+	return JSON.stringify(object);
+};
+
+const createCow = async () => {
+	var form = document.querySelector('#formNewCow');
+	var data = createJSONFromForm(form);
+	data = JSON.parse(data);
+	data.plot_id = localStorage.getItem('plotId');
+	await fetch('http://127.0.0.1:3001/cows/create', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+	}).then((response) => {
+		return response;
+	});
+	window.alert('Vaca creada con éxito');
+	//window.location.reload();
+};
+
+
+var btn = document.querySelector('#buttonNewCow');
+btn.addEventListener('click', () => {
+	createCow();
+});
+
+const editCow = async (id) => {
+	var form = document.querySelector('#formEditCow');
+	var data = createJSONFromForm(form);
+	data = JSON.parse(data);
+	const keys = Object.keys(data);
+	keys.forEach((key) => {
+		if (data[key] === '') {
+			delete data[key];
+		}
+	});
+	await fetch(`http://127.0.0.1:3001/cows/${id}`, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+	});
+	window.alert('Vaca editada con éxito');
+	window.location.reload();
+};
+
+const deleteCow = async (id) => {
+	await fetch(`http://127.0.0.1:3001/cows/${id}`, {
+		method: 'DELETE'
+	});
+	window.alert('Vaca eliminada con éxito');
+	window.location.reload();
+};
+
+
+const table = document.querySelector('#tableBody_Cows');
+table.addEventListener('click', (event) => {
+	if(event.target.classList.contains('fa-pen-to-square')){
+		const row = event.target.parentElement.parentElement.parentElement;
+		const objectid = row.querySelector('td').textContent;
+		const object = finalCows.find((cow) =>{
+			var i = finalCows.indexOf(cow) === objectid-1;
+			return i;
+		});
+		var btn = document.querySelector('#buttonEditCow');
+		btn.addEventListener('click', () => {
+			editCow(object.id);
+		});
+	}else if(event.target.classList.contains('fa-trash-can')){
+		const row = event.target.parentElement.parentElement.parentElement;
+		const objectid = row.querySelector('td').textContent;
+		const object = finalCows.find((cow) =>{
+			var i = finalCows.indexOf(cow) === objectid-1;
+			return i;
+		});
+		deleteCow(object.id);
+		window.alert('Vaca eliminada con éxito');
+		window.location.reload();
+	}
+});
+
+const fetchCowsQuantity = async (plotId) => {
+	const response = await fetch(`http://127.0.0.1:3001/cows/number/${plotId}`);
+	const cows = await response.json();
+	return cows;
+};
+
+const fetchFarmName = async (farmId) => {
+	const response = await fetch(`http://127.0.0.1:3001/farms/${farmId}`);
+	const farm = await response.json();
+	return farm;
+};
+
+window.addEventListener('load', function() {
+	listCows(plotId);
+});
+
 const obtainAgeCow =  (born_date) => {
 	var today = new Date();
 	var bornDate = new Date(born_date);
@@ -59,22 +168,3 @@ const obtainAgeCow =  (born_date) => {
 	var age = Math.floor(difference / (1000 * 3600 * 24 * 365.25));
 	return age;
 };
-
-const table = document.querySelector('#tableBody_Cows');
-table.addEventListener('click', (e)=>{
-	if(e.target.classList.contains('fa-eye')){
-		const row = e.target.parentElement.parentElement.parentElement;
-		const objectid = row.querySelector('td').textContent;
-		const object = finalCows.find((finca)=>{
-			var i =finalCows.indexOf(finca) == objectid-1;
-			return i;
-		});
-		localStorage.setItem('cowId', object.id);
-		//window.location.href = '.html';
-	}
-});
-
-window.addEventListener('load', function() {
-	listCows();
-});
-

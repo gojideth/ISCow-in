@@ -112,6 +112,48 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="seccion contenedor popup">
+        <div class="modal fade" id="modalEditLote">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
+                    <div class="seccion contenedor">
+                        <form id="formEditLote">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar Lote</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Número de lote</label>
+                                        <input type="text" id="plot_number_e" class="form-control form-control-lg" name="plot_number"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Área</label>
+                                        <input type="text" id="plot_size_e" class="form-control form-control-lg" name="plot_size"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Estado</label>
+                                        <input type="text" id="plot_status_e" class="form-control form-control-lg" name="plot_status" />
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2">
+                                    <button type="button" class="btn btn-primary" id="buttonUpdatePlot">
+                                    Editar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>    
 
     <footer class="footer fixed-bottom">

@@ -25,6 +25,7 @@ const listLotes= async ()=>{
 		var farm = fetchFarmName(lote.farm_id);
 		farm.then((farm)=>{
 			name.innerHTML = 'Lotes de la granja: '+ farm.Farm.farm_name;
+			console.log(farm.Farm.farm_name);
 		});
 		name.className = 'h1';
 
@@ -38,6 +39,8 @@ const listLotes= async ()=>{
 		buttonView.innerHTML = '<i class="fa-regular fa-eye"></i>';
 
 		buttonEdit.className = 'btn btn-m btn-primary';
+		buttonEdit.setAttribute('data-bs-toggle', 'modal');
+		buttonEdit.setAttribute('data-bs-target', '#modalEditLote');
 		buttonDelete.className = 'btn btn-m btn-danger';
 		buttonView.className = 'btn btn-m btn-success';
 
@@ -71,6 +74,67 @@ const fetchFarmName = async (farmId) => {
 	return farm;
 };
 
+const createJSONFromForm = (form) => {
+	const formData = new FormData(form);
+	var object = {};
+	formData.forEach((value, key) => {
+		object[key] = value;
+	});
+	return JSON.stringify(object);
+};
+
+const createLote = async () => {
+	var form = document.querySelector('#formNewLote');
+	var data = createJSONFromForm(form);
+	data = JSON.parse(data);
+	data.farm_id = localStorage.getItem('farmId');
+	await fetch('http://127.0.0.1:3001/plots/create', {
+		method: 'POST',
+		body: JSON.stringify(data),
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
+	window.alert('Lote creado con éxito');
+	window.location.reload();
+};
+
+const deleteLote = async (id) => {
+	await fetch(`http://127.0.0.1:3001/plots/${id}`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
+	window.alert('Lote eliminado con éxito');
+	window.location.reload();
+};
+
+const updateLote = async (id) => {
+	var form = document.querySelector('#formEditLote');
+	var data = createJSONFromForm(form);
+	data = JSON.parse(data);
+	const keys = Object.keys(data);
+	keys.forEach((key)=>{
+		if(data[key] == ''){
+			delete data[key];
+		}
+	}
+	);
+	await fetch(`http://127.0.0.1:3001/plots/${id}`, {
+		method: 'PUT',
+		body: JSON.stringify(data),
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
+	window.alert('Lote actualizado con éxito');
+	window.location.reload();
+};
+
+
+
+
 const table = document.querySelector('#tableBody_Lotes');
 table.addEventListener('click', (e)=>{
 	if(e.target.classList.contains('fa-eye')){
@@ -82,8 +146,33 @@ table.addEventListener('click', (e)=>{
 		});
 		localStorage.setItem('plotId', object.id);
 		window.location.href = 'cows.html';
+	}else if(e.target.classList.contains('fa-trash-can')){
+		const row = e.target.parentElement.parentElement.parentElement;
+		const objectid = row.querySelector('td').textContent;
+		const object = finalLotes.find((finca)=>{
+			var i =finalLotes.indexOf(finca) == objectid-1;
+			return i;
+		});
+		deleteLote(object.id);
+	}else if(e.target.classList.contains('fa-pen-to-square')){
+		const row = e.target.parentElement.parentElement.parentElement;
+		const objectid = row.querySelector('td').textContent;
+		const object = finalLotes.find((finca)=>{
+			var i =finalLotes.indexOf(finca) == objectid-1;
+			return i;
+		});
+		var btn = document.querySelector('#buttonUpdatePlot');
+		btn.addEventListener('click', ()=>{
+			updateLote(object.id);
+		});
 	}
 });
+
+var button = document.querySelector('#buttonNewPlot');
+button.addEventListener('click', ()=>{
+	createLote(createJSONFromForm(document.querySelector('#formNewLote')));
+}
+);
 
 window.addEventListener('load', function() {
 	listLotes();

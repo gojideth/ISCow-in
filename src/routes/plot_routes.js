@@ -9,6 +9,7 @@ router.post('/create', controller.createPlot);
 router.put('/:id', controller.updatePlot);
 router.delete('/:id', controller.deletePlot);
 router.get('/:id', controller.getPlot);
+// Get plots number by farm_id
 router.get('/number/:id', controller.getNumberPlots);
 
 

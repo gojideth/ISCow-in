@@ -87,7 +87,7 @@ const getAllPlotsByFarmId = async (id)=>{
 	console.log('getAllPlotsByFarmId: [GET] /farm/plot/');
 	try {
 		const allPlots = await Plot.count({where: {farm_id: id}});
-		console.log('OK getAllPlotsByFarmId: ', allPlots.map(plots => plots.dataValues));
+		console.log('OK getAllPlotsByFarmId: ', allPlots);
 		return allPlots;
 	} catch (error) {
 		console.log('Error in getAllPlotsByFarmId ' + 'Plots:', error

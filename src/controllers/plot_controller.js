@@ -119,7 +119,6 @@ const getPlotsByFarmId = async(req, res)=>{
 };
 
 
-
 module.exports = {
 	createPlot,
 	getAllPlots,

@@ -25,6 +25,7 @@ const listLotes= async ()=>{
 		var farm = fetchFarmName(lote.farm_id);
 		farm.then((farm)=>{
 			name.innerHTML = 'Lotes de la granja: '+ farm.Farm.farm_name;
+			console.log(farm.Farm.farm_name);
 		});
 		name.className = 'h1';
 
@@ -71,6 +72,32 @@ const fetchFarmName = async (farmId) => {
 	return farm;
 };
 
+const createJSONFromForm = (form) => {
+	const formData = new FormData(form);
+	var object = {};
+	formData.forEach((value, key) => {
+		object[key] = value;
+	});
+	return JSON.stringify(object);
+};
+
+const createLote = async () => {
+	var form = document.querySelector('#formNewLote');
+	var data = createJSONFromForm(form);
+	data = JSON.parse(data);
+	data.farm_id = localStorage.getItem('farmId');
+	await fetch('http://127.0.0.1:3001/plots/create', {
+		method: 'POST',
+		body: JSON.stringify(data),
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
+	window.alert('Lote creado con éxito');
+	window.location.reload();
+};
+
+
 const table = document.querySelector('#tableBody_Lotes');
 table.addEventListener('click', (e)=>{
 	if(e.target.classList.contains('fa-eye')){
@@ -84,6 +111,12 @@ table.addEventListener('click', (e)=>{
 		window.location.href = 'cows.html';
 	}
 });
+
+var button = document.querySelector('#buttonNewPlot');
+button.addEventListener('click', ()=>{
+	createLote(createJSONFromForm(document.querySelector('#formNewLote')));
+}
+);
 
 window.addEventListener('load', function() {
 	listLotes();

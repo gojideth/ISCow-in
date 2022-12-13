@@ -16,7 +16,12 @@ const listFincas= async (id)=>{
 		tdIndex.innerHTML = index+1;
 		tdName.innerHTML = finca.farm_name;
 		tdAddress.innerHTML = finca.farm_location;
-		tdSize.innerHTML = finca.farm_size;		
+		tdSize.innerHTML = finca.farm_size;	
+		var number = fetchNumberPlots(finca.id);
+		number.then((number)=>{
+			tdLotes.innerHTML = number.plots;
+		});
+		
 		var buttonEdit = document.createElement('button');
 		var buttonDelete = document.createElement('button');
 		var buttonView = document.createElement('button');
@@ -35,8 +40,8 @@ const listFincas= async (id)=>{
 					var i =finalFincas.indexOf(finca) == objectid-1;
 					return i;
 				});
-				console.log(object.id+ ' Aca deberia haber un objeto');		
 				localStorage.setItem('farmId', object.id);
+				window.location.href = 'lotes.html';
 			}
 		});
 	
@@ -103,6 +108,7 @@ const createFinca = async () => {
 };
 		
 
+	
 var btn = document.querySelector('#buttonAddFarm');
 btn.addEventListener('click', () => {
 	createFinca();
@@ -110,4 +116,5 @@ btn.addEventListener('click', () => {
 
 window.addEventListener('load', function() {
 	listFincas(userId);
+
 });

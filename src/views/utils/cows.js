@@ -1,30 +1,30 @@
 const plotId = localStorage.getItem('plotId');
-
 var response, cows, finalCows;
 
-const listCows= async (id)=>{
-	response= await fetch(`http://127.0.0.1:3001/cows/plot/${id}`);
+const listCows= async ()=>{
+	response= await fetch(`http://127.0.0.1:3001/cows/plot/${plotId}`);
 	cows = await response.json();
-	finalCows = cows.allCows;
+	finalCows = cows.cows;
 	finalCows.forEach((cow, index)=>{
-		var tdRace= document.createElement('td');
 		var tdIndex= document.createElement('td');
+		var tdRace = document.createElement('td');
 		var tdGender= document.createElement('td');
+		var tdBornDate= document.createElement('td');
 		var tdAge= document.createElement('td');
-		var tdDate= document.createElement('td');
-		var tdActions= document.createElement('td');
 		var tdOrigin= document.createElement('td');
+		var tdActions= document.createElement('td');
+		var tr = document.createElement('tr');
+		tdIndex.innerHTML = index+1;
+		tdRace.innerHTML = cow.race;
+		tdGender.innerHTML = cow.gender;
+		tdBornDate.innerHTML = cow.born_date;
+		tdAge.innerHTML = obtainAgeCow(cow.born_date);
+		tdOrigin.innerHTML = cow.origin;	
 		if(cow.origin ==='natural'){
 			tdOrigin.innerHTML = '<i class="fa-solid fa-leaf"></i>';
 		}else{
 			tdOrigin.innerHTML = '<i class="fa-solid fa-money-bill"></i>';
 		}
-		var tr = document.createElement('tr');
-		tdIndex.innerHTML = index+1;
-		tdRace.innerHTML = cow.race;
-		tdGender.innerHTML = cow.gender;
-		tdAge.innerHTML = cow.age; //TODO: Consulta para obtener la edad de la vaca
-		tdDate.innerHTML = cow.born_date;
 		var buttonEdit = document.createElement('button');
 		var buttonDelete = document.createElement('button');
 		var buttonWeight = document.createElement('button');
@@ -38,10 +38,11 @@ const listCows= async (id)=>{
 		buttonEdit.setAttribute('data-bs-target', '#modalEditCow');
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
+		tdActions.appendChild(buttonWeight);
 		tr.appendChild(tdIndex);
 		tr.appendChild(tdRace);
 		tr.appendChild(tdGender);
-		tr.appendChild(tdDate);
+		tr.appendChild(tdBornDate);
 		tr.appendChild(tdAge);
 		tr.appendChild(tdOrigin);
 		tr.appendChild(tdActions);
@@ -77,8 +78,9 @@ const createCow = async () => {
 		return response;
 	});
 	window.alert('Vaca creada con éxito');
-	window.location.reload();
+	//window.location.reload();
 };
+
 
 var btn = document.querySelector('#buttonNewCow');
 btn.addEventListener('click', () => {
@@ -121,7 +123,7 @@ table.addEventListener('click', (event) => {
 		const row = event.target.parentElement.parentElement.parentElement;
 		const objectid = row.querySelector('td').textContent;
 		const object = finalCows.find((cow) =>{
-			var i = finalCows.indexOf(cow) === objectid;
+			var i = finalCows.indexOf(cow) === objectid-1;
 			return i;
 		});
 		var btn = document.querySelector('#buttonEditCow');
@@ -155,3 +157,10 @@ window.addEventListener('load', function() {
 	listCows(plotId);
 });
 
+const obtainAgeCow =  (born_date) => {
+	var today = new Date();
+	var bornDate = new Date(born_date);
+	var difference = today.getTime() - bornDate.getTime();
+	var age = Math.floor(difference / (1000 * 3600 * 24 * 365.25));
+	return age;
+};

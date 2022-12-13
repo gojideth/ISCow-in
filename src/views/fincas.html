@@ -113,6 +113,48 @@
         </div>
     </section>
 
+    <section class="seccion contenedor popup">
+        <div class="modal fade" id="modalEditFarm">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
+                    <div class="seccion contenedor">
+                        <form id="formEditFarm">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar Finca</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Nombre</label>
+                                        <input type="text" id="farm_name_e" class="form-control form-control-lg" name="farm_name"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Dirección</label>
+                                        <input type="text" id="farm_location_e" class="form-control form-control-lg" name="farm_location"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Tamaño en m2</label>
+                                        <input type="text" id="farm_size_E" class="form-control form-control-lg" name="farm_size"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 pb-2">
+                                    <button type="button" class="btn btn-primary" id="buttonEditFarm">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer fixed-bottom">
         <div class="contenedor contenedor-footer">
             <p class="copyright">ISCow-In &copy; 2021</p>

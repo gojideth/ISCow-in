@@ -1,9 +1,11 @@
 const userId = localStorage.getItem('personId');
+
+var response, fincas, finalFincas;
+
 const listFincas= async (id)=>{
-	const response= await fetch(`http://127.0.0.1:3001/farms/person/${id}`);
-	const fincas = await response.json();
-	
-	const finalFincas = fincas.Farm;
+	response= await fetch(`http://127.0.0.1:3001/farms/person/${id}`);
+	fincas = await response.json();
+	finalFincas = fincas.Farm;
 	finalFincas.forEach((finca, index)=>{
 		var tdName= document.createElement('td');
 		var tdIndex= document.createElement('td');
@@ -11,7 +13,6 @@ const listFincas= async (id)=>{
 		var tdSize= document.createElement('td');
 		var tdLotes = document.createElement('td');
 		var tdActions= document.createElement('td');
-		var id = document.createElement('td');
 		var tr = document.createElement('tr');
 		tdIndex.innerHTML = index+1;
 		tdName.innerHTML = finca.farm_name;
@@ -29,34 +30,11 @@ const listFincas= async (id)=>{
 		buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
 		buttonView.innerHTML = '<i class="fa-regular fa-eye"></i>';
 		buttonEdit.className = 'btn btn-m btn-primary';
+		buttonEdit.setAttribute('data-bs-toggle', 'modal');
+		buttonEdit.setAttribute('data-bs-target', '#modalEditFarm');
 		buttonDelete.className = 'btn btn-m btn-danger';
 		buttonView.className = 'btn btn-m btn-success';
-		
-		const table = document.querySelector('#tableBody_Fincas');
-		table.addEventListener('click', (e)=>{
-			if(e.target.classList.contains('fa-eye')){
-				const row = e.target.parentElement.parentElement.parentElement;
-				const objectid = row.querySelector('td').textContent;
-				const object = finalFincas.find((finca)=>{
-					var i =finalFincas.indexOf(finca) == objectid-1;
-					return i;
-				});
-				localStorage.setItem('farmId', object.id);
-				window.location.href = 'lotes.html';
-			}
-		});
-	
 
-		buttonDelete.addEventListener('click', ()=>{
-			alert('Eliminar');
-			deleteFunction(finca.id, 'farms');
-		});
-		buttonEdit.addEventListener('click', ()=>{
-			//setPlaceholders(finca.farm_name, finca.farm_location, finca.farm_size);
-			editFunction(finca.id, 'farms');
-		});
-
-		
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
 		tdActions.appendChild(buttonView);
@@ -79,8 +57,6 @@ const fetchNumberPlots = async (id) => {
 	return number;
 };
 
-
-
 const createJSONFromForm = (form) => {
 	const formData = new FormData(form);
 	var object = {};
@@ -95,7 +71,7 @@ const createFinca = async () => {
 	var data = createJSONFromForm(form);
 	data = JSON.parse(data);
 	data.person_id =  localStorage.getItem('personId');
-	const response = await fetch('http://127.0.0.1:3001/farms/create', {
+	await fetch('http://127.0.0.1:3001/farms/create', {
 		method: 'POST',
 		body: JSON.stringify(data),
 		headers: {
@@ -107,6 +83,61 @@ const createFinca = async () => {
 	window.alert('Finca creada');
 	window.location.reload();
 };
+
+const editFinca = async (id) => {
+	var form = document.querySelector('#formEditFarm');
+	var data = createJSONFromForm(form);
+	data = JSON.parse(data);
+	const keys = Object.keys(data);
+	keys.forEach((key) => {
+		if (data[key] === '') {
+			delete data[key];
+		}
+	});
+	await fetch(`http://127.0.0.1:3001/farms/${id}`, {
+		method: 'PUT',
+		body: JSON.stringify(data),
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
+	window.alert('Finca editada');
+	window.location.reload();
+};
+
+const table = document.querySelector('#tableBody_Fincas');
+table.addEventListener('click', (e)=>{
+	if(e.target.classList.contains('fa-eye')){
+		const row = e.target.parentElement.parentElement.parentElement;
+		const objectid = row.querySelector('td').textContent;
+		const object = finalFincas.find((finca)=>{
+			var i =finalFincas.indexOf(finca) == objectid-1;
+			return i;
+		});
+		localStorage.setItem('farmId', object.id);
+		window.location.href = 'lotes.html';
+	}else if(e.target.classList.contains('fa-pen-to-square')){
+		const row = e.target.parentElement.parentElement.parentElement;
+		const objectid = row.querySelector('td').textContent;
+		const object = finalFincas.find((finca)=>{
+			var i =finalFincas.indexOf(finca) == objectid-1;
+			return i;
+		});
+		var btn = document.querySelector('#buttonEditFarm');
+		btn.addEventListener('click', () => {
+			console.log(object.id);
+			editFinca(object.id);
+		});
+	}else if(e.target.classList.contains('fa-trash-can')){
+		const row = e.target.parentElement.parentElement.parentElement;
+		const objectid = row.querySelector('td').textContent;
+		const object = finalFincas.find((finca)=>{
+			var i =finalFincas.indexOf(finca) == objectid-1;
+			return i;
+		}
+		);
+	}
+});
 		
 
 	

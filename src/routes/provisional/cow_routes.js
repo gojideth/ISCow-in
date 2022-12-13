@@ -11,4 +11,7 @@ router.delete('/:id', controller.deleteCow);
 router.get('/:id', controller.getCow);
 router.get('/number/:id', controller.getCowCountByPlot);
 
+//Get cows by plot_id
+router.get('/plot/:id', controller.getCowsByPlot);
+
 module.exports = router;

@@ -96,7 +96,7 @@ const getCow = async (id) => {
 };
 
 //* Get number of cows inside a plot by plot_id
-const getCowsByPlot = async (plot_id) => {
+const getNumberCowsByPlot = async (plot_id) => {
 	console.log('getCowsByPlot: [GET] /cows/');
 	console.log('plot_id : ', plot_id);
 	try {
@@ -109,6 +109,19 @@ const getCowsByPlot = async (plot_id) => {
 	}
 };
 
+//* Get all cows from a plot by plot_id
+const getCowsByPlot = async (plot_id) => {
+	console.log('getCowsByPlot: [GET] /cows/');
+	console.log('plot_id : ', plot_id);
+	try {
+		const cow = await Cow.findAll({where: {plot_id: plot_id}});
+		console.log('Ok getCowsByPlot: ', {cow});
+		return cow;
+	} catch (error) {
+		console.log('Error in getCowsByPlot: ' + 'Cow: ', error);
+		return {error: error};
+	}
+};
 
 module.exports = {
 	createCow,
@@ -116,5 +129,6 @@ module.exports = {
 	updateCow,
 	deleteCow,
 	getCow,
+	getNumberCowsByPlot,
 	getCowsByPlot
 };

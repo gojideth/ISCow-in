@@ -88,7 +88,7 @@ const getCowCountByPlot = async (req, res) => {
 		if (cowCount.error) {
 			return res.status(400).json({ ' Bad Request': cowCount.error });
 		}
-		return res.status(200).json(cowCount);
+		return res.status(200).json({cowCount});
 	} catch (error) {
 		return res.status(400).json({ error: 'Bad Request' });
 	}

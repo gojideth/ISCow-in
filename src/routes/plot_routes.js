@@ -11,6 +11,8 @@ router.delete('/:id', controller.deletePlot);
 router.get('/:id', controller.getPlot);
 // Get plots number by farm_id
 router.get('/number/:id', controller.getNumberPlots);
+// Get plots by farm_id
+router.get('/farm/:id', controller.getPlotsByFarmId);
 
 
 

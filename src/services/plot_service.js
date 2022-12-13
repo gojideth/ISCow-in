@@ -82,11 +82,24 @@ const deletePlot = async (id)=>{
 	}
 };
 
-//*Get all PLOTS by farm_id
-const getAllPlotsByFarmId = async (id)=>{
+//*Get all number PLOTS by farm_id
+const getNumberOfPlotsByFarmId = async (id)=>{
 	console.log('getAllPlotsByFarmId: [GET] /farm/plot/');
 	try {
 		const allPlots = await Plot.count({where: {farm_id: id}});
+		console.log('OK getAllPlotsByFarmId: ', allPlots);
+		return allPlots;
+	} catch (error) {
+		console.log('Error in getAllPlotsByFarmId ' + 'Plots:', error
+		);
+		return error;
+	}
+};
+
+const getAllPlotsByFarmId = async (id)=>{
+	console.log('getAllPlotsByFarmId: [GET] /farm/plot/');
+	try {
+		const allPlots = await Plot.findAll({where: {farm_id: id}});
 		console.log('OK getAllPlotsByFarmId: ', allPlots);
 		return allPlots;
 	} catch (error) {
@@ -117,8 +130,9 @@ module.exports = {
 	getAllPlots,
 	updatePlot,
 	deletePlot,
-	getAllPlotsByFarmId,
-	getPlotById
+	getNumberOfPlotsByFarmId,
+	getPlotById,
+	getAllPlotsByFarmId
 };
 
 

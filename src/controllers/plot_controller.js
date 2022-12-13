@@ -76,11 +76,11 @@ const getPlot = async(req, res)=>{
 	}
 };
 
-//!* GET[/farm/plot/] Get all PLOTS from a farm
+//!* GET[/farm/plot/] Get all numbers PLOTS from a farm
 const getNumberPlots = async(req, res)=>{
 	console.log('getFarmPlots: [GET] /farm/plot/');
 	try {
-		const plots = await plotService.getAllPlotsByFarmId(req.params.id);
+		const plots = await plotService.getNumberOfPlotsByFarmId(req.params.id);
 		if(plots.error){
 			return res.status(400).json({error: plots.error});
 		}
@@ -104,6 +104,20 @@ const getPlotByPlotId = async(req, res)=>{
 	}
 };
 
+//*GET[/plots/Farm/:id] Get all plots from a farm
+const getPlotsByFarmId = async(req, res)=>{
+	console.log('getPlotsByFarmId: [GET] /plots/Farm/:id');
+	try {
+		const plots = await plotService.getAllPlotsByFarmId(req.params.id);
+		if(plots.error){
+			return res.status(400).json({error: plots.error});
+		}
+		return res.status(200).json({plots});
+	} catch (error) {
+		return res.status(400).json({error: 'Bad Request'});
+	}
+};
+
 
 
 module.exports = {
@@ -113,5 +127,6 @@ module.exports = {
 	deletePlot,
 	getPlot,
 	getNumberPlots,
-	getPlotByPlotId	
+	getPlotByPlotId,
+	getPlotsByFarmId
 };

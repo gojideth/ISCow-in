@@ -2,6 +2,7 @@ const userId = localStorage.getItem('personId');
 const listFincas= async (id)=>{
 	const response= await fetch(`http://127.0.0.1:3001/farms/person/${id}`);
 	const fincas = await response.json();
+	
 	const finalFincas = fincas.Farm;
 	finalFincas.forEach((finca, index)=>{
 		var tdName= document.createElement('td');
@@ -15,8 +16,12 @@ const listFincas= async (id)=>{
 		tdIndex.innerHTML = index+1;
 		tdName.innerHTML = finca.farm_name;
 		tdAddress.innerHTML = finca.farm_location;
-		tdSize.innerHTML = finca.farm_size;
-		tdLotes.innerHTML = finca.farm; //TODO: Consulta para obtener los lotes de la finca
+		tdSize.innerHTML = finca.farm_size;	
+		var number = fetchNumberPlots(finca.id);
+		number.then((number)=>{
+			tdLotes.innerHTML = number.plots;
+		});
+		
 		var buttonEdit = document.createElement('button');
 		var buttonDelete = document.createElement('button');
 		var buttonView = document.createElement('button');
@@ -36,9 +41,12 @@ const listFincas= async (id)=>{
 					var i =finalFincas.indexOf(finca) == objectid-1;
 					return i;
 				});
-				console.log(object.id);
+				localStorage.setItem('farmId', object.id);
+				window.location.href = 'lotes.html';
 			}
 		});
+	
+
 		buttonDelete.addEventListener('click', ()=>{
 			alert('Eliminar');
 			deleteFunction(finca.id, 'farms');
@@ -47,6 +55,8 @@ const listFincas= async (id)=>{
 			//setPlaceholders(finca.farm_name, finca.farm_location, finca.farm_size);
 			editFunction(finca.id, 'farms');
 		});
+
+		
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
 		tdActions.appendChild(buttonView);
@@ -60,8 +70,14 @@ const listFincas= async (id)=>{
 			tableBody.appendChild(tr);
 		}
 	});
+	return finalFincas;
 };
 
+const fetchNumberPlots = async (id) => {
+	const response = await fetch(`http://127.0.0.1:3001/plots/number/${id}`);
+	const number = await response.json();
+	return number;
+};
 
 
 
@@ -93,6 +109,7 @@ const createFinca = async () => {
 };
 		
 
+	
 var btn = document.querySelector('#buttonAddFarm');
 btn.addEventListener('click', () => {
 	createFinca();
@@ -100,4 +117,5 @@ btn.addEventListener('click', () => {
 
 window.addEventListener('load', function() {
 	listFincas(userId);
+
 });

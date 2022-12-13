@@ -105,6 +105,17 @@ const editFinca = async (id) => {
 	window.location.reload();
 };
 
+const deleteFinca = async (id) => {
+	await fetch(`http://127.0.0.1:3001/farms/${id}`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
+	window.alert('Finca eliminada');
+	window.location.reload();
+};
+
 const table = document.querySelector('#tableBody_Fincas');
 table.addEventListener('click', (e)=>{
 	if(e.target.classList.contains('fa-eye')){
@@ -134,8 +145,8 @@ table.addEventListener('click', (e)=>{
 		const object = finalFincas.find((finca)=>{
 			var i =finalFincas.indexOf(finca) == objectid-1;
 			return i;
-		}
-		);
+		});
+		deleteFinca(object.id);
 	}
 });
 		

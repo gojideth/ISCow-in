@@ -1,10 +1,8 @@
 const farmId = localStorage.getItem('farmId');
-var response, lotes, finalLotes;
-
 const listLotes= async ()=>{
-	response= await fetch(`http://127.0.0.1:3001/plots/farm/${farmId}`);
-	lotes = await response.json();
-	finalLotes = lotes.plots;
+	const response= await fetch(`http://127.0.0.1:3001/plots/farm/${farmId}`);
+	const lotes = await response.json();
+	const finalLotes = lotes.plots;
 	finalLotes.forEach((lote, index)=>{
 		var tdIndex= document.createElement('td');
 		var tdNumber = document.createElement('td');
@@ -24,6 +22,7 @@ const listLotes= async ()=>{
 		var name = document.getElementById('name_contenedor');
 		var farm = fetchFarmName(lote.farm_id);
 		farm.then((farm)=>{
+			console.log(farm);
 			name.innerHTML = 'Lotes de la granja: '+ farm.Farm.farm_name;
 		});
 		name.className = 'h1';
@@ -31,19 +30,12 @@ const listLotes= async ()=>{
 		tdVacas.innerHTML = lote.cows;//TODO: Consulta para obtener las vacas del lote
 		var buttonEdit = document.createElement('button');
 		var buttonDelete = document.createElement('button');
-		var buttonView = document.createElement('button');
-
 		buttonEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
 		buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-		buttonView.innerHTML = '<i class="fa-regular fa-eye"></i>';
-
 		buttonEdit.className = 'btn btn-m btn-primary';
 		buttonDelete.className = 'btn btn-m btn-danger';
-		buttonView.className = 'btn btn-m btn-success';
-
 		tdActions.appendChild(buttonEdit);
 		tdActions.appendChild(buttonDelete);
-		tdActions.appendChild(buttonView);
 		tr.appendChild(tdIndex);
 		tr.appendChild(tdNumber);
 		tr.appendChild(tdTamaño);
@@ -56,7 +48,6 @@ const listLotes= async ()=>{
 		}
 
 	});
-	return finalLotes;
 };
 
 const fetchCowsQuantity = async (plotId) => {
@@ -71,22 +62,7 @@ const fetchFarmName = async (farmId) => {
 	return farm;
 };
 
-const table = document.querySelector('#tableBody_Lotes');
-table.addEventListener('click', (e)=>{
-	if(e.target.classList.contains('fa-eye')){
-		const row = e.target.parentElement.parentElement.parentElement;
-		const objectid = row.querySelector('td').textContent;
-		const object = finalLotes.find((finca)=>{
-			var i =finalLotes.indexOf(finca) == objectid-1;
-			return i;
-		});
-		localStorage.setItem('plotId', object.id);
-		window.location.href = 'cows.html';
-	}
-});
-
 window.addEventListener('load', function() {
 	listLotes();
 });
-
 

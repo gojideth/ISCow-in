@@ -134,10 +134,12 @@ table.addEventListener('click', (event) => {
 		const row = event.target.parentElement.parentElement.parentElement;
 		const objectid = row.querySelector('td').textContent;
 		const object = finalCows.find((cow) =>{
-			var i = finalCows.indexOf(cow) === objectid;
+			var i = finalCows.indexOf(cow) === objectid-1;
 			return i;
 		});
 		deleteCow(object.id);
+		window.alert('Vaca eliminada con éxito');
+		window.location.reload();
 	}
 });
 

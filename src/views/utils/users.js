@@ -69,6 +69,14 @@ table.addEventListener('click', (e) => {
 		btn.addEventListener('click', () => {
 			editUser(object.id);
 		});
+	}else if(e.target.classList.contains('fa-trash-can')){
+		const row = e.target.parentElement.parentElement.parentElement;
+		const id = row.querySelector('td').textContent;
+		const object = finalUsers.find((user) =>{
+			var i = finalUsers.indexOf(user) == id-1;
+			return i;
+		});
+		deleteUser(object.id);
 	}
 });
 
@@ -106,6 +114,17 @@ const editUser = async (id) => {
 		},
 	});
 	window.alert('Usuario editado');
+	window.location.reload();
+};
+
+const deleteUser = async (id) => {
+	await fetch(`http://${HOST}/persons/${id}`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+	window.alert('Usuario eliminado');
 	window.location.reload();
 };
 
